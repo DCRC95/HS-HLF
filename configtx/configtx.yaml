@@ -1,0 +1,254 @@
+---
+################################################################################
+#
+#   Section: Organizations
+#
+#   This section defines all five organizational identities, using the MSP
+#   directories created in the previous steps.
+#
+################################################################################
+Organizations:
+  - &OrdererOrg
+    Name: OrdererOrg
+    ID: OrdererMSP
+    MSPDir: ../organizations/ordererOrganizations/orderer.example.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Writers:
+        Type: Signature
+        Rule: "OR('OrdererMSP.member')"
+      Admins:
+        Type: Signature
+        Rule: "OR('OrdererMSP.admin')"
+    OrdererEndpoints:
+      - orderer.example.com:7050
+
+  - &BankA
+    Name: BankAMSP
+    ID: BankAMSP
+    MSPDir: ../organizations/peerOrganizations/banka.example.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('BankAMSP.admin', 'BankAMSP.peer', 'BankAMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('BankAMSP.admin', 'BankAMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('BankAMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('BankAMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.banka.example.com
+        Port: 7051
+
+  - &BankB
+    Name: BankBMSP
+    ID: BankBMSP
+    MSPDir: ../organizations/peerOrganizations/bankb.example.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('BankBMSP.admin', 'BankBMSP.peer', 'BankBMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('BankBMSP.admin', 'BankBMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('BankBMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('BankBMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.bankb.example.com
+        Port: 9051
+
+  - &ConsortiumOps
+    Name: ConsortiumOpsMSP
+    ID: ConsortiumOpsMSP
+    MSPDir: ../organizations/peerOrganizations/consortiumops.example.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('ConsortiumOpsMSP.admin', 'ConsortiumOpsMSP.peer', 'ConsortiumOpsMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('ConsortiumOpsMSP.admin', 'ConsortiumOpsMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('ConsortiumOpsMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('ConsortiumOpsMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.consortiumops.example.com
+        Port: 11051
+
+  - &RegulatorObserver
+    Name: RegulatorObserverMSP
+    ID: RegulatorObserverMSP
+    MSPDir: ../organizations/peerOrganizations/regulatorobserver.example.com/msp
+    Policies:
+      Readers:
+        Type: Signature
+        Rule: "OR('RegulatorObserverMSP.admin', 'RegulatorObserverMSP.peer', 'RegulatorObserverMSP.client')"
+      Writers:
+        Type: Signature
+        Rule: "OR('RegulatorObserverMSP.admin', 'RegulatorObserverMSP.client')"
+      Admins:
+        Type: Signature
+        Rule: "OR('RegulatorObserverMSP.admin')"
+      Endorsement:
+        Type: Signature
+        Rule: "OR('RegulatorObserverMSP.peer')"
+    AnchorPeers:
+      - Host: peer0.regulatorobserver.example.com
+        Port: 12051
+
+################################################################################
+#
+#   SECTION: Capabilities, Application, Orderer, Channel (Standard Fabric Defaults)
+#   
+#   These sections are kept largely as standard Fabric V2.5 defaults.
+#
+################################################################################
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+  Orderer: &OrdererCapabilities
+    V2_0: true
+  Application: &ApplicationCapabilities
+    V2_5: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  Addresses:
+    - orderer.example.com:7050
+  BatchTimeout: 2s
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+  Capabilities:
+    <<: *ChannelCapabilities
+
+################################################################################
+#
+#   Profile
+#
+#   - Defines two custom profiles: one for the system channel genesis block, 
+#     and one for the application channel creation transaction.
+#
+################################################################################
+Profiles:
+
+  # 1. System Channel Genesis Block Profile
+  FiveOrgOrdererGenesis:
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      OrdererType: etcdraft
+      EtcdRaft:
+        Consenters:
+          - Host: orderer.example.com
+            Port: 7050
+            ClientTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
+            ServerTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
+      Organizations:
+        - *OrdererOrg
+      Capabilities: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      # All peer organizations are added to the consortium at genesis
+        - *BankA
+        - *BankB
+        - *ConsortiumOps
+        - *RegulatorObserver
+
+  # 2. Application Channel Creation Transaction Profile
+  FiveOrgApplicationChannel:
+    Consortium: SampleConsortium  # Placeholder name, as it's not strictly necessary for v2.x
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *BankA
+        - *BankB
+        - *ConsortiumOps
+        - *RegulatorObserver
+      Capabilities: *ApplicationCapabilities
+
+  # 3. Backwards-compatible profile name used by network.sh and createChannel.sh
+  ChannelUsingRaft:
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      OrdererType: etcdraft
+      EtcdRaft:
+        Consenters:
+          - Host: orderer.example.com
+            Port: 7050
+            ClientTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
+            ServerTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
+      Organizations:
+        - *OrdererOrg
+      Capabilities: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *BankA
+        - *BankB
+        - *ConsortiumOps
+        - *RegulatorObserver
+      Capabilities: *ApplicationCapabilities
