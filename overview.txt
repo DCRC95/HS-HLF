@@ -1,0 +1,408 @@
+OVERVIEW – FEDERATED AML AI NETWORK FABRIC INFRASTRUCTURE
+==========================================================
+
+1. PURPOSE AND SCOPE
+--------------------
+
+This document describes the technical design and current implementation state of the
+Hyperledger Fabric infrastructure that underpins the Federated AML AI Network.
+
+It is written for engineers and architects who will:
+- Operate and evolve the Fabric network.
+- Integrate AML analytics, SAR workflows, and federated learning components.
+- Satisfy regulatory and audit requirements for traceability, identity management,
+  and operational resilience.
+
+Scope:
+- Phase 1, Weeks 1–2 of the AML AI execution plan.
+- A single dev network, built from the Fabric test network patterns but adapted to
+  a four-organisation consortium with CA-issued MSPs and compliance-grade artefacts.
+
+Out of scope (for now):
+- Production deployment specifics.
+- Full DR runbooks and DPIA outputs (these are planned follow-on workstreams).
+
+
+2. CONSORTIUM MODEL AND NETWORK ROLES
+-------------------------------------
+
+The consortium for this network consists of five logical organisations:
+
+- BankA (MSP ID: BankAMSP)
+  - A member institution contributing data, alerts, and analysts.
+  - Hosts endorsing peers and client identities for AML workloads.
+
+- BankB (MSP ID: BankBMSP)
+  - Another member institution with equivalent roles to BankA.
+
+- ConsortiumOps (MSP ID: ConsortiumOpsMSP)
+  - Shared operations / platform organisation.
+  - Manages shared components, cross-institution monitoring, and some infra tasks.
+
+- RegulatorObserver (MSP ID: RegulatorObserverMSP)
+  - Regulator / supervisor providing read-only observation and oversight.
+  - Its peers and identities have access tailored for regulatory inspection and
+    evidence review (not day-to-day transaction submission).
+
+- OrdererOrg (MSP ID: OrdererMSP)
+  - Provides the ordering service (etcdraft).
+  - Does not host application chaincode; instead, anchors consensus and policy.
+
+Each of these organisations is represented in the Fabric configuration via its MSP
+(Membership Service Provider) and associated cryptographic material. The MSMs are
+issued by Fabric Certificate Authorities (Fabric CA) rather than cryptogen, to align
+with realistic PKI expectations.
+
+
+3. REPOSITORY LAYOUT
+--------------------
+
+Root for this work:
+- /Users/rhys/fabric-dev/fabric-dev-network
+
+Key subdirectories:
+
+- configtx/
+  - configtx.yaml
+    - Defines organisations, MSPs, anchor peers, capabilities, and channel profiles.
+
+- compose/
+  - compose-ca.yaml
+    - Defines Fabric CA services for all five organisations.
+  - compose-test-net.yaml
+    - Defines the orderer and peer containers and their volume mounts.
+  - docker/docker-compose-test-net.yaml
+    - Docker CLI variant for the peer containers.
+
+- organizations/
+  - fabric-ca/
+    - <org>/
+      - fabric-ca-server-config.yaml
+        - Per-organisation CA configuration (CN, OU, CSR fields, DB, etc.).
+  - peerOrganizations/
+    - banka.example.com/
+    - bankb.example.com/
+    - consortiumops.example.com/
+    - regulatorobserver.example.com/
+    - Each contains msp/, tlsca/, ca/, and peers/ subtrees created by Fabric CA.
+  - ordererOrganizations/
+    - orderer.example.com/
+      - msp/, tlsca/, ca/, and orderers/orderer.orderer.example.com/.
+
+- scripts/
+  - envVar.sh
+    - Defines setGlobals(), mapping logical organisation indices to MSP IDs and
+      file-system locations for admin MSPs and TLS roots.
+  - setAnchorPeer.sh
+    - Computes and applies anchor peer updates per organisation.
+  - createChannel.sh
+    - Uses configtxgen to generate channel genesis blocks and joins peers.
+  - other helper scripts (deployCC.sh, orderer.sh, etc.) retained from the Fabric
+    test network and adapted where necessary.
+
+- infra/
+  - msp-archives/
+    - <org>-msp.tar.gz (without private keys).
+  - README.md
+    - Captures the evidence trail: commands run, MSP archive locations, and configtx
+      outputs.
+
+- fabric-samples/
+  - Upstream Fabric sample code and binaries (bin/), used as the source for tools
+    such as peer, configtxgen, and fabric-ca-client.
+
+
+4. CERTIFICATE AUTHORITY LAYER
+------------------------------
+
+The network uses Fabric CA for all MSP and TLS material. CA containers are defined
+in compose/compose-ca.yaml:
+
+- ca_orderer:
+  - Issues identities for OrdererOrg.
+  - Listens on port 9054 (mapped out to localhost:9054).
+
+- ca_banka:
+  - Issues identities for BankA (BankAMSP).
+  - Port 7054.
+
+- ca_bankb:
+  - Issues identities for BankB (BankBMSP).
+  - Port 8054.
+
+- ca_consortiumops:
+  - Issues identities for ConsortiumOps (ConsortiumOpsMSP).
+  - Port 10054.
+
+- ca_regulatorobserver:
+  - Issues identities for RegulatorObserver (RegulatorObserverMSP).
+  - Port 11054.
+
+Each CA has a corresponding configuration file:
+
+- organizations/fabric-ca/<org>/fabric-ca-server-config.yaml
+  - ca.name set to a meaningful value (e.g. ca-banka, ca-bankb).
+  - csr.cn and csr.names configured for:
+    - C=GB, ST=London, L=London.
+    - O="AML AI Network".
+    - OU set to the logical role (BankA, BankB, ConsortiumOps, RegulatorObserver,
+      OrdererOrg).
+  - csr.hosts includes:
+    - CA container name (e.g. ca_banka).
+    - Peer hostnames (peer0.<org>.example.com, peer1.<org>.example.com where
+      applicable).
+    - Admin hostnames.
+    - localhost (for dev).
+  - registry section bootstraps an admin identity with broad registrar privileges
+    (hf.Registrar.Roles, hf.Revoker, etc.).
+
+Rationale:
+- Using Fabric CA provides a more realistic and controllable PKI than cryptogen.
+- CSR metadata (CN/O/OU) and hostnames are aligned with the AML consortium’s naming
+  to facilitate future integration with external PKI and regulatory audits.
+
+
+5. MSP STRUCTURE AND NODEOU CONFIGURATION
+-----------------------------------------
+
+MSP material is generated via Fabric CA, not cryptogen. The default in network.config
+is:
+
+- CRYPTO="fabric-ca"
+
+The (now removed) custom register/enroll script created per-organisation MSPs by:
+- Enrolling the CA admin (admin:adminpw).
+- Registering:
+  - Peers: peer0, peer1 (where applicable).
+  - Application client: user1.
+  - Organisation admin: <org>admin.
+  - Auditor: auditor1.
+- Enrolling MSP material for:
+  - organizations/peerOrganizations/<org>.example.com/msp
+  - organizations/peerOrganizations/<org>.example.com/peers/peer0.<org>.example.com/msp
+  - TLS for each peer under peers/peer0.<org>.example.com/tls.
+  - Similar patterns for bankb, consortiumops, regulatorobserver.
+- Enrolling orderer and orderer admin MSPs under:
+  - organizations/ordererOrganizations/orderer.example.com/...
+
+MSP configuration includes NodeOUs:
+
+- Example (BankA MSP config.yaml):
+  - organizations/peerOrganizations/banka.example.com/msp/config.yaml
+    - NodeOUs:
+      - Enable: true
+      - ClientOUIdentifier:
+        - Certificate: cacerts/localhost-7054-ca-banka.pem
+        - OrganizationalUnitIdentifier: client
+      - PeerOUIdentifier:
+        - Certificate: cacerts/localhost-7054-ca-banka.pem
+        - OrganizationalUnitIdentifier: peer
+      - AdminOUIdentifier:
+        - Certificate: cacerts/localhost-7054-ca-banka.pem
+        - OrganizationalUnitIdentifier: admin
+      - OrdererOUIdentifier:
+        - Certificate: cacerts/localhost-7054-ca-banka.pem
+        - OrganizationalUnitIdentifier: orderer
+
+Rationale:
+- NodeOUs ensure that roles (client, peer, admin, orderer) are encoded in the
+  certificates and can be used in policies and access control decisions.
+- This is required by the Week 1–2 playbook to pass audit reviews of MSP structure.
+
+
+6. CONFIGTX AND CHANNEL PROFILES
+--------------------------------
+
+The channel configuration is defined in:
+
+- configtx/configtx.yaml
+
+Key sections:
+
+- Organisations:
+  - OrdererOrg (OrdererMSP)
+    - MSPDir: ../organizations/ordererOrganizations/orderer.example.com/msp
+    - OrdererEndpoints: orderer.example.com:7050
+
+  - BankA (BankAMSP)
+    - MSPDir: ../organizations/peerOrganizations/banka.example.com/msp
+    - Policies: Readers/Writers/Admins/Endorsement using BankAMSP.{admin,peer,client}.
+    - AnchorPeers: peer0.banka.example.com:7051.
+
+  - BankB (BankBMSP)
+    - MSPDir: ../organizations/peerOrganizations/bankb.example.com/msp
+    - AnchorPeers: peer0.bankb.example.com:9051.
+
+  - ConsortiumOps (ConsortiumOpsMSP)
+    - MSPDir: ../organizations/peerOrganizations/consortiumops.example.com/msp
+    - AnchorPeers: peer0.consortiumops.example.com:11051.
+
+  - RegulatorObserver (RegulatorObserverMSP)
+    - MSPDir: ../organizations/peerOrganizations/regulatorobserver.example.com/msp
+    - AnchorPeers: peer0.regulatorobserver.example.com:12051.
+
+- Capabilities:
+  - Channel: V2_0
+  - Orderer: V2_0
+  - Application: V2_5
+
+- Profiles:
+  - FiveOrgOrdererGenesis:
+    - Builds the system channel genesis block.
+    - etcdraft orderer with a single consenter:
+      - Host: orderer.example.com, Port: 7050.
+      - TLS certs taken from:
+        - ../organizations/ordererOrganizations/orderer.example.com/
+          orderers/orderer.orderer.example.com/tls/server.crt
+    - Application section includes all four peer orgs in the consortium.
+
+  - FiveOrgApplicationChannel:
+    - Application channel profile with the four peer orgs.
+    - Consortium name is a placeholder but sufficient for v2.x.
+
+  - ChannelUsingRaft:
+    - A compatibility profile that matches the expected name used by the upstream
+      scripts (network.sh, scripts/createChannel.sh).
+    - Uses the same org definitions and TLS paths as FiveOrgOrdererGenesis and
+      FiveOrgApplicationChannel.
+
+Sanity checks:
+- For each peer MSP ID, we have run:
+  - configtxgen -printOrg <OrgMSP> > organizations/peerOrganizations/<org>.example.com/configtx.yaml
+  - These files are evidence that the MSP structures serialise correctly and match
+    configtx expectations.
+
+
+7. NETWORK BRING-UP AND ORG MAPPING
+-----------------------------------
+
+Network bring-up is orchestrated by:
+
+- network.sh
+  - Derived from Fabric test network, but with:
+    - PATH updated to prioritise this repo’s fabric-samples/bin.
+    - checkPrereqs() simplified to check only that peer is available.
+    - CRYPTO controlled via network.config and -ca flag.
+
+- scripts/createChannel.sh
+  - Uses configtxgen -profile ChannelUsingRaft to generate:
+    - channel-artifacts/<CHANNEL_NAME>.block.
+  - Joins peers and sets anchor peers via scripts/setAnchorPeer.sh.
+
+- scripts/envVar.sh
+  - Maps numeric organisation ids to our AML MSPs:
+    - 1 → BankAMSP (banka.example.com).
+    - 2 → BankBMSP (bankb.example.com).
+    - 3 → ConsortiumOpsMSP (consortiumops.example.com).
+    - 4 → RegulatorObserverMSP (regulatorobserver.example.com).
+  - Sets:
+    - CORE_PEER_LOCALMSPID.
+    - CORE_PEER_MSPCONFIGPATH (Admin@<org>.example.com).
+    - CORE_PEER_ADDRESS (peer0.<org>.example.com:<port>).
+    - CORE_PEER_TLS_ROOTCERT_FILE (org-specific tlsca file).
+
+- scripts/setAnchorPeer.sh
+  - For a given ORG id, sets HOST and PORT to the correct anchor peer hostnames
+    (peer0.banka.*, peer0.bankb.*, etc.).
+  - Uses jq and configtxlator (via configUpdate.sh) to build and submit anchor-peer
+    update transactions.
+
+Status:
+- ./network.sh up createChannel -c amlchannel -ca:
+  - Uses the ChannelUsingRaft profile in configtx/configtx.yaml.
+  - Brings up:
+    - OrdererOrg using CA-issued MSP/TLS.
+    - peer0.banka, peer0.bankb, peer0.consortiumops, peer0.regulatorobserver.
+  - Joins all four peer orgs to amlchannel.
+
+
+8. EVIDENCE AND MSP ARCHIVES
+-----------------------------
+
+To satisfy the “evidence on disk” requirement (Week 1–2 playbook), we maintain
+explicit artefacts:
+
+- infra/msp-archives/
+  - banka-msp.tar.gz
+  - bankb-msp.tar.gz
+  - consortiumops-msp.tar.gz
+  - regulatorobserver-msp.tar.gz
+  - orderer-msp.tar.gz
+  - All created with:
+    - tar --exclude "*_sk" -czf <org>-msp.tar.gz msp
+  - These tarballs intentionally exclude private keys but contain public certs
+    and MSP metadata suitable for audit and disaster recovery workflows.
+
+- infra/README.md
+  - Documents:
+    - Which configtx profiles are used.
+    - Where MSP archives live.
+    - High-level results of running configtxgen and peer channel list.
+
+- organizations/peerOrganizations/*/configtx.yaml
+  - Generated via configtxgen -printOrg.
+  - Represent the formal MSP definitions consumed by configtxgen and can be used
+    as evidence that our MSP structure is coherent.
+
+
+9. NEXT-PHASE WORK (BEYOND THIS IMPLEMENTATION)
+----------------------------------------------
+
+The following items are planned but not yet fully implemented in code:
+
+- Ledger snapshot & DR policy (Week 1 Step 3)
+  - Define RPO/RTO and implement scripts to:
+    - Run peer node snapshot save for each channel.
+    - Archive snapshots and/or CouchDB exports.
+    - Compute and store SHA256 checksums.
+  - Document procedures and responsibilities in docs/dr/ledger-snapshot.md.
+
+- DPIA and data inventory (Week 1 Step 4)
+  - Maintain a data inventory (e.g. Notion or GRC tool) for:
+    - OSINT feeds.
+    - Offshore leaks datasets.
+    - Member-provided AML datasets.
+  - Link each dataset to lawful basis, jurisdiction, retention, and sensitivity.
+  - Identify processing requiring DPIAs and track mitigations and sign-offs.
+
+- Personas and UX foundation (Weeks 1–2 Steps 5 and Week 2 UX items)
+  - Conduct analyst interviews across institutions.
+  - Produce personas, journey maps, and low-fidelity mock-ups.
+  - Ensure trust assumptions and identity models reflected in this Fabric network
+    match the UX expectations (e.g. which roles can see what).
+
+- Cluster hardening and automation (Week 2)
+  - TLS/KMS integration (Vault or cloud KMS, short-lived certs, revocation tests).
+  - Automation of network bring-up/teardown (bash/Ansible plus CI jobs).
+  - MSP documentation: diagrams of CA hierarchy, OU mappings, and access-control
+    matrices per role.
+
+- Cold-start expectation briefing
+  - Capture baseline AML metrics (false positives, SAR throughput).
+  - Define realistic expectations for Phase 1 versus longer-term improvements.
+  - Produce briefing materials aligned with PMO/comms requirements.
+
+
+10. OPERATING PRINCIPLES AND CONSTRAINTS
+----------------------------------------
+
+The following constraints should be observed when extending or operating this
+infrastructure:
+
+- Do not alter .env files or global environment without explicit approval.
+- Prefer Fabric CA over cryptogen; do not reintroduce cryptogen MSPs unless there
+  is a strong, documented reason.
+- Avoid introducing new technologies or architectural patterns if existing ones
+  can be extended cleanly.
+- Keep changes scoped, documented, and aligned with the playbook steps.
+- No mock or fake data in dev/prod paths (mocking is acceptable only in tests).
+- Think across environments (dev, test, prod); avoid assumptions that would break
+  when scaling out.
+- Document all significant commands and configuration changes in repo-tracked
+  markdown (e.g. infra/README.md, docs/).
+
+This overview should give new team members enough context to understand what has
+been built, where key artefacts live, and how the current state satisfies the
+Weeks 1–2 objectives of the AML AI programme.
+
+
