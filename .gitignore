@@ -2,6 +2,8 @@
 *.swp
 *.swo
 *~
+
+# Fabric Dev Network - root level ignores
 fabric-dev-network/organizations/peerOrganizations/
 fabric-dev-network/organizations/ordererOrganizations/
 fabric-dev-network/system-genesis-block/
@@ -9,3 +11,22 @@ fabric-dev-network/channel-artifacts/
 fabric-dev-network/*.tar.gz
 fabric-dev-network/log.txt
 fabric-dev-network/fabric-samples/
+
+# Fabric Dev Network - internal ignores (relative to fabric-dev-network/)
+/channel-artifacts/*.tx
+/channel-artifacts/*.block
+/ledgers
+/ledgers-backup
+/channel-artifacts/*.json
+/channel-artifacts/*.pb
+/org3-artifacts/crypto-config/*
+organizations/fabric-ca/ordererOrg/*
+organizations/fabric-ca/org1/*
+organizations/fabric-ca/org2/*
+addOrg3/fabric-ca/org3/*
+organizations/ordererOrganizations/*
+organizations/peerOrganizations/*
+system-genesis-block/*
+*.tar.gz
+log.txt
+fabric-samples/

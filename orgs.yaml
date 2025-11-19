@@ -1,0 +1,194 @@
+# Organisation Manifest for AML AI Network
+# Single source of truth for organisation inventory, CA bindings, trust bundles, and evidence pointers
+# Last updated: 2025-11-19
+
+organisations:
+  # Peer Organisations
+  - name: BankA
+    msp_id: BankAMSP
+    domain: banka.example.com
+    org_type: peer
+    org_number: 1
+    ca:
+      service_name: ca_banka
+      container_name: ca_banka
+      ca_name: ca-banka
+      port: 7054
+      operations_port: 17054
+      csr_hosts:
+        - ca_banka
+        - peer0.banka.example.com
+        - peer1.banka.example.com
+        - admin.banka.example.com
+        - localhost
+    peers:
+      - name: peer0
+        host: peer0.banka.example.com
+        port: 7051
+        chaincode_port: 7052
+        operations_port: 9444
+        anchor_peer: true
+      - name: peer1
+        host: peer1.banka.example.com
+        port: 8051
+        chaincode_port: 8052
+    msp_dir: organizations/peerOrganizations/banka.example.com/msp
+    msp_archive: infra/msp-archives/banka-msp.tar.gz
+    configtx_output: organizations/peerOrganizations/banka.example.com/configtx.yaml
+    connection_profile_json: organizations/peerOrganizations/banka.example.com/connection-banka.json
+    connection_profile_yaml: organizations/peerOrganizations/banka.example.com/connection-banka.yaml
+    admin_user: Admin@banka.example.com
+    admin_path: organizations/peerOrganizations/banka.example.com/users/Admin@banka.example.com/msp
+
+  - name: BankB
+    msp_id: BankBMSP
+    domain: bankb.example.com
+    org_type: peer
+    org_number: 2
+    ca:
+      service_name: ca_bankb
+      container_name: ca_bankb
+      ca_name: ca-bankb
+      port: 8054
+      operations_port: 18054
+      csr_hosts:
+        - ca_bankb
+        - peer0.bankb.example.com
+        - peer1.bankb.example.com
+        - admin.bankb.example.com
+        - localhost
+    peers:
+      - name: peer0
+        host: peer0.bankb.example.com
+        port: 9051
+        chaincode_port: 9052
+        operations_port: 9445
+        anchor_peer: true
+      - name: peer1
+        host: peer1.bankb.example.com
+        port: 10051
+        chaincode_port: 10052
+    msp_dir: organizations/peerOrganizations/bankb.example.com/msp
+    msp_archive: infra/msp-archives/bankb-msp.tar.gz
+    configtx_output: organizations/peerOrganizations/bankb.example.com/configtx.yaml
+    connection_profile_json: organizations/peerOrganizations/bankb.example.com/connection-bankb.json
+    connection_profile_yaml: organizations/peerOrganizations/bankb.example.com/connection-bankb.yaml
+    admin_user: Admin@bankb.example.com
+    admin_path: organizations/peerOrganizations/bankb.example.com/users/Admin@bankb.example.com/msp
+
+  - name: ConsortiumOps
+    msp_id: ConsortiumOpsMSP
+    domain: consortiumops.example.com
+    org_type: peer
+    org_number: 3
+    ca:
+      service_name: ca_consortiumops
+      container_name: ca_consortiumops
+      ca_name: ca-consortiumops
+      port: 10054
+      operations_port: 20054
+      csr_hosts:
+        - ca_consortiumops
+        - peer0.consortiumops.example.com
+        - admin.consortiumops.example.com
+        - localhost
+    peers:
+      - name: peer0
+        host: peer0.consortiumops.example.com
+        port: 11051
+        chaincode_port: 11052
+        operations_port: 9446
+        anchor_peer: true
+    msp_dir: organizations/peerOrganizations/consortiumops.example.com/msp
+    msp_archive: infra/msp-archives/consortiumops-msp.tar.gz
+    configtx_output: organizations/peerOrganizations/consortiumops.example.com/configtx.yaml
+    connection_profile_json: organizations/peerOrganizations/consortiumops.example.com/connection-consortiumops.json
+    connection_profile_yaml: organizations/peerOrganizations/consortiumops.example.com/connection-consortiumops.yaml
+    admin_user: Admin@consortiumops.example.com
+    admin_path: organizations/peerOrganizations/consortiumops.example.com/users/Admin@consortiumops.example.com/msp
+
+  - name: RegulatorObserver
+    msp_id: RegulatorObserverMSP
+    domain: regulatorobserver.example.com
+    org_type: peer
+    org_number: 4
+    ca:
+      service_name: ca_regulatorobserver
+      container_name: ca_regulatorobserver
+      ca_name: ca-regulatorobserver
+      port: 11054
+      operations_port: 21054
+      csr_hosts:
+        - ca_regulatorobserver
+        - peer0.regulatorobserver.example.com
+        - auditor.regulatorobserver.example.com
+        - localhost
+    peers:
+      - name: peer0
+        host: peer0.regulatorobserver.example.com
+        port: 12051
+        chaincode_port: 12052
+        operations_port: 9447
+        anchor_peer: true
+    msp_dir: organizations/peerOrganizations/regulatorobserver.example.com/msp
+    msp_archive: infra/msp-archives/regulatorobserver-msp.tar.gz
+    configtx_output: organizations/peerOrganizations/regulatorobserver.example.com/configtx.yaml
+    connection_profile_json: organizations/peerOrganizations/regulatorobserver.example.com/connection-regulatorobserver.json
+    connection_profile_yaml: organizations/peerOrganizations/regulatorobserver.example.com/connection-regulatorobserver.yaml
+    admin_user: Admin@regulatorobserver.example.com
+    admin_path: organizations/peerOrganizations/regulatorobserver.example.com/users/Admin@regulatorobserver.example.com/msp
+
+  # Orderer Organisation
+  - name: OrdererOrg
+    msp_id: OrdererMSP
+    domain: orderer.example.com
+    org_type: orderer
+    org_number: 0
+    ca:
+      service_name: ca_orderer
+      container_name: ca_orderer
+      ca_name: ca-orderer
+      port: 9054
+      operations_port: 19054
+      csr_hosts:
+        - ca_orderer
+        - orderer.example.com
+        - localhost
+    orderers:
+      - name: orderer
+        host: orderer.example.com
+        port: 7050
+        admin_port: 7053
+        operations_port: 9443
+        tls_cert: organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
+    msp_dir: organizations/ordererOrganizations/orderer.example.com/msp
+    msp_archive: infra/msp-archives/orderer-msp.tar.gz
+    admin_user: Admin@orderer.example.com
+    admin_path: organizations/ordererOrganizations/orderer.example.com/users/Admin@orderer.example.com/msp
+
+# Channel Configuration
+channels:
+  - name: amlchannel
+    profile: ChannelUsingRaft
+    consortium: SampleConsortium
+    organisations:
+      - BankAMSP
+      - BankBMSP
+      - ConsortiumOpsMSP
+      - RegulatorObserverMSP
+
+# Evidence Locations
+evidence:
+  msp_archives: infra/msp-archives/
+  configtx_outputs: organizations/peerOrganizations/*/configtx.yaml
+  channel_artifacts: channel-artifacts/
+  network_evidence: infra/README.md
+
+# Network Configuration
+network:
+  name: fabric_test
+  crypto_provider: fabric-ca
+  consensus_type: etcdraft
+  configtx_path: configtx/configtx.yaml
+  compose_base: compose/compose-test-net.yaml
+  compose_ca: compose/compose-ca.yaml
