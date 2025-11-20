@@ -1,0 +1,3 @@
+2025-11-20T15:48:53Z | op=renew | component=peer0.banka.example.com | status=skipped | reason='missing tls dir /Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/banka.example.com/peers/peer0.banka.example.com/tls'
+2025-11-20T15:58:46Z | op=renew | component=peer0.banka.example.com | org=banka | serial=3FF9C0DF53BEDB8CDDD7C453AB2B9CAD2D924643 | expires='Nov 20 15:59:00 2026 GMT' | backup=/Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/banka.example.com/peers/peer0.banka.example.com/tls/backup-20251120T155845Z
+2025-11-20T15:58:46Z | op=post-renewal | component=peer0.banka.example.com | action=pending-restart | note='run docker restart peer0.banka.example.com'

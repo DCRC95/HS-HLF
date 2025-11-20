@@ -26,15 +26,25 @@ services:
       - FABRIC_CA_SERVER_OPERATIONS_LISTENADDRESS=0.0.0.0:19054
       - FABRIC_CA_SERVER_CSR_CN=ca-orderer
       - FABRIC_CA_SERVER_CSR_HOSTS=ca_orderer,orderer.example.com,localhost
-      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server/ca-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server/ca-key.pem
+      - FABRIC_CA_SERVER_CA_CERTFILE=/vault/rendered/ordererOrg/ca-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/vault/rendered/ordererOrg/ca-key.pem
+      - VAULT_ADDR=http://vault:8200
+      - VAULT_SECRET_PATH=secret/data/ca/ordererOrg
     ports:
       - "9054:9054"
       - "19054:19054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: >
+      sh -c 'until [ -s /vault/rendered/ordererOrg/ca-key.pem ]; do
+        echo "Waiting for Vault agent to render ordererOrg key...";
+        sleep 1;
+      done;
+      fabric-ca-server start -b admin:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/ordererOrg:/etc/hyperledger/fabric-ca-server
+      - ../vault/rendered/ordererOrg:/vault/rendered/ordererOrg:ro
     container_name: ca_orderer
+    depends_on:
+      - vault_agent
     networks:
       - test
 
@@ -53,15 +63,25 @@ services:
       - FABRIC_CA_SERVER_OPERATIONS_LISTENADDRESS=0.0.0.0:17054
       - FABRIC_CA_SERVER_CSR_CN=ca-banka
       - FABRIC_CA_SERVER_CSR_HOSTS=ca_banka,peer0.banka.example.com,peer1.banka.example.com,admin.banka.example.com,localhost
-      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server/ca-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server/ca-key.pem
+      - FABRIC_CA_SERVER_CA_CERTFILE=/vault/rendered/banka/ca-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/vault/rendered/banka/ca-key.pem
+      - VAULT_ADDR=http://vault:8200
+      - VAULT_SECRET_PATH=secret/data/ca/banka
     ports:
       - "7054:7054"
       - "17054:17054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: >
+      sh -c 'until [ -s /vault/rendered/banka/ca-key.pem ]; do
+        echo "Waiting for Vault agent to render banka key...";
+        sleep 1;
+      done;
+      fabric-ca-server start -b admin:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/banka:/etc/hyperledger/fabric-ca-server
+      - ../vault/rendered/banka:/vault/rendered/banka:ro
     container_name: ca_banka
+    depends_on:
+      - vault_agent
     networks:
       - test
 
@@ -81,15 +101,25 @@ services:
       - FABRIC_CA_SERVER_OPERATIONS_LISTENADDRESS=0.0.0.0:18054
       - FABRIC_CA_SERVER_CSR_CN=ca-bankb
       - FABRIC_CA_SERVER_CSR_HOSTS=ca_bankb,peer0.bankb.example.com,peer1.bankb.example.com,admin.bankb.example.com,localhost
-      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server/ca-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server/ca-key.pem
+      - FABRIC_CA_SERVER_CA_CERTFILE=/vault/rendered/bankb/ca-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/vault/rendered/bankb/ca-key.pem
+      - VAULT_ADDR=http://vault:8200
+      - VAULT_SECRET_PATH=secret/data/ca/bankb
     ports:
       - "8054:8054"
       - "18054:18054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: >
+      sh -c 'until [ -s /vault/rendered/bankb/ca-key.pem ]; do
+        echo "Waiting for Vault agent to render bankb key...";
+        sleep 1;
+      done;
+      fabric-ca-server start -b admin:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/bankb:/etc/hyperledger/fabric-ca-server
+      - ../vault/rendered/bankb:/vault/rendered/bankb:ro
     container_name: ca_bankb
+    depends_on:
+      - vault_agent
     networks:
       - test
 
@@ -108,15 +138,25 @@ services:
       - FABRIC_CA_SERVER_OPERATIONS_LISTENADDRESS=0.0.0.0:20054
       - FABRIC_CA_SERVER_CSR_CN=ca-consortiumops
       - FABRIC_CA_SERVER_CSR_HOSTS=ca_consortiumops,peer0.consortiumops.example.com,admin.consortiumops.example.com,localhost
-      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server/ca-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server/ca-key.pem
+      - FABRIC_CA_SERVER_CA_CERTFILE=/vault/rendered/consortiumops/ca-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/vault/rendered/consortiumops/ca-key.pem
+      - VAULT_ADDR=http://vault:8200
+      - VAULT_SECRET_PATH=secret/data/ca/consortiumops
     ports:
       - "10054:10054"
       - "20054:20054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: >
+      sh -c 'until [ -s /vault/rendered/consortiumops/ca-key.pem ]; do
+        echo "Waiting for Vault agent to render consortiumops key...";
+        sleep 1;
+      done;
+      fabric-ca-server start -b admin:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/consortiumops:/etc/hyperledger/fabric-ca-server
+      - ../vault/rendered/consortiumops:/vault/rendered/consortiumops:ro
     container_name: ca_consortiumops
+    depends_on:
+      - vault_agent
     networks:
       - test
 
@@ -135,14 +175,57 @@ services:
       - FABRIC_CA_SERVER_OPERATIONS_LISTENADDRESS=0.0.0.0:21054
       - FABRIC_CA_SERVER_CSR_CN=ca-regulatorobserver
       - FABRIC_CA_SERVER_CSR_HOSTS=ca_regulatorobserver,peer0.regulatorobserver.example.com,auditor.regulatorobserver.example.com,localhost
-      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server/ca-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server/ca-key.pem
+      - FABRIC_CA_SERVER_CA_CERTFILE=/vault/rendered/regulatorobserver/ca-cert.pem
+      - FABRIC_CA_SERVER_CA_KEYFILE=/vault/rendered/regulatorobserver/ca-key.pem
+      - VAULT_ADDR=http://vault:8200
+      - VAULT_SECRET_PATH=secret/data/ca/regulatorobserver
     ports:
       - "11054:11054"
       - "21054:21054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
+    command: >
+      sh -c 'until [ -s /vault/rendered/regulatorobserver/ca-key.pem ]; do
+        echo "Waiting for Vault agent to render regulatorobserver key...";
+        sleep 1;
+      done;
+      fabric-ca-server start -b admin:adminpw -d'
     volumes:
       - ../organizations/fabric-ca/regulatorobserver:/etc/hyperledger/fabric-ca-server
+      - ../vault/rendered/regulatorobserver:/vault/rendered/regulatorobserver:ro
     container_name: ca_regulatorobserver
+    depends_on:
+      - vault_agent
+    networks:
+      - test
+
+  vault:
+    image: hashicorp/vault:1.15
+    container_name: vault
+    cap_add:
+      - IPC_LOCK
+    environment:
+      - VAULT_DEV_ROOT_TOKEN_ID=dev-root-token
+      - VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:8200
+    command: vault server -dev -dev-root-token-id=dev-root-token -dev-listen-address=0.0.0.0:8200
+    ports:
+      - "8200:8200"
+    volumes:
+      - ../vault/data:/vault/file
+    networks:
+      - test
+
+  vault_agent:
+    image: hashicorp/vault:1.15
+    container_name: vault_agent
+    depends_on:
+      - vault
+    environment:
+      - VAULT_ADDR=http://vault:8200
+    command: vault agent -config=/vault/config/agent.hcl
+    volumes:
+      - ../vault/config:/vault/config:ro
+      - ../vault/templates:/vault/templates:ro
+      - ../vault/tokens:/vault/tokens:ro
+      - ../vault/rendered:/vault/rendered
+      - ../vault/agent:/vault/agent
     networks:
       - test

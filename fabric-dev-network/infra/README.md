@@ -77,6 +77,7 @@
 - Updated `compose-test-net.yaml` to include all 4 peer services
 - Fixed `ccp-generate.sh` to generate connection profiles for all 4 orgs
 - Fixed orderer TLS hostname references in `orderer.sh`, `setAnchorPeer.sh`, and `configUpdate.sh`
+- **Anchor peer delta warning:** When `setAnchorPeer.sh` reruns after the anchors are already configured, `configtxlator` emits `error computing config update: no differences detected`. This is expected; the script exits after logging the warning and no channel state changes are required.
 
 ## Ledger Snapshot & DR Evidence – Step 3 (In Progress)
 
@@ -186,4 +187,84 @@
     - Resulting archives under `backups/`.
     - Contents of `infra/ledger-snapshots.log`.
   - Append a dated sub‑section here summarising the first successful snapshot set (org, channel, height, archive paths).
+
+## Certificate Lifecycle Hardening – Step 2 (2025-11-20)
+
+### Short-Lived CA Certs & CRL Defaults
+- Updated every `organizations/fabric-ca/*/fabric-ca-server-config.yaml` (and top-level mirrors) so `csr.ca.expiry=720h` (~30 days) and `crl.expiry=24h`.
+- Recreated CA stack with Vault integration:
+  ```bash
+  docker compose -f compose/compose-ca.yaml up -d --force-recreate
+  ```
+- Logs from each CA confirm the change (example):
+  ```text
+  docker logs ca_banka | grep -A8 "csr:"
+  csr:
+    ca:
+      expiry: 720h
+  ...
+  Key file location: /vault/rendered/banka/ca-key.pem
+  ```
+
+### Vault-Backed Keys
+- Added `vault` + `vault_agent` services to `compose/compose-ca.yaml`. Agent renders PEMs into `vault/rendered/<org>/`.
+- Dev token stored at `vault/tokens/root.token` (do **not** reuse in prod). Config lives in `vault/config/agent.hcl`.
+- Helper script to seed secrets: `./scripts/vault/seed_ca_material.sh`. Run after every Vault restart or CA key rotation.
+- Evidence: `docker logs ca_orderer` shows the CA loading `/vault/rendered/ordererOrg/ca-key.pem`.
+- **Identity reset notice:** As part of seeding Vault and recreating the CA stack on 2025-11-20, every `fabric-ca-server.db` was deleted. All previously issued MSP material is now invalid and must be re-enrolled via `./network.sh ... -ca`, `registerEnroll.sh`, or the renewal script before any downstream testing.
+
+### TLS Renewal Automation
+- Script: `scripts/certs/renew_tls.sh` (shellchecked via `docker run --rm -v "$PWD":/mnt koalaman/shellcheck:stable /mnt/fabric-dev-network/scripts/certs/renew_tls.sh`).
+- Sample execution (BankA peer0):
+  ```bash
+  cd fabric-dev-network
+  ./scripts/certs/renew_tls.sh -c peer0.banka.example.com
+  ```
+  Output:
+  ```text
+  2025-11-20T15:58:46Z | op=renew | component=peer0.banka.example.com | org=banka | serial=3FF9C0DF53... | expires='Nov 20 15:59:00 2026 GMT' | backup=.../tls/backup-20251120T155845Z
+  2025-11-20T15:58:46Z | op=post-renewal | component=peer0.banka.example.com | action=pending-restart | note='run docker restart peer0.banka.example.com'
+  ```
+- Log location: `fabric-dev-network/logs/cert-renewal.log`.
+
+### Revocation Drill (peer1.banka.example.com)
+- Captured serial/AKI via:
+  ```bash
+  FABRIC_CA_CLIENT_HOME=organizations/peerOrganizations/banka.example.com \
+    ./fabric-samples/bin/fabric-ca-client certificate list \
+    --caname ca-banka --id peer1 \
+    --tls.certfiles organizations/fabric-ca/banka/ca-cert.pem
+  ```
+- Revoked TLS + enrollment certs, then regenerated CRL:
+  ```bash
+  ./fabric-samples/bin/fabric-ca-client revoke \
+    --caname ca-banka \
+    --revoke.serial 4bbd863cf6c693cbcfb7af59d73597a0f98aec2c \
+    --revoke.aki FBC6E1B6EA69E1998395E2421B2ADC866B34673A \
+    --revoke.reason keyCompromise \
+    --tls.certfiles organizations/fabric-ca/banka/ca-cert.pem
+  ./fabric-samples/bin/fabric-ca-client revoke \
+    --caname ca-banka --revoke.name peer1 \
+    --revoke.reason affiliationChange \
+    --tls.certfiles organizations/fabric-ca/banka/ca-cert.pem
+  ./fabric-samples/bin/fabric-ca-client gencrl --caname ca-banka \
+    --tls.certfiles organizations/fabric-ca/banka/ca-cert.pem
+  ```
+- Distributed `organizations/peerOrganizations/banka.example.com/msp/crls/crl.pem` to:
+  - `peers/peer0.banka.example.com/msp/crls/`
+  - `users/Admin@banka.example.com/msp/crls/`, `users/User1@...`, `users/Auditor@...`
+  - `organizations/ordererOrganizations/orderer.example.com/msp/crls/banka-crl.pem`
+- Restarted peers and orderer (`docker restart peer0.banka.example.com ... orderer.example.com`).
+- Verification: re-enrollment attempt now fails as expected:
+  ```bash
+  FABRIC_CA_CLIENT_HOME=organizations/peerOrganizations/banka.example.com \
+    ./fabric-samples/bin/fabric-ca-client enroll \
+    -u https://peer1:peer1pw@localhost:7054 --caname ca-banka \
+    -M /tmp/revoked-peer1 \
+    --tls.certfiles organizations/fabric-ca/banka/ca-cert.pem
+  # -> Error Code: 20 - Authentication failure
+  ```
+
+### Security Runbook
+- Canonical process is documented in `docs/security/cert-lifecycle.md` (covers validity periods, renewal cadence, Vault rotation, revocation workflow, and escalation contacts). Approval pending from the Security Lead.
 

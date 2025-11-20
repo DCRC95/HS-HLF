@@ -315,7 +315,7 @@ csr:
      - peer1.banka.example.com
      - admin.banka.example.com
    ca:
-      expiry: 131400h
+      expiry: 720h
       pathlength: 1
 
 #############################################################################

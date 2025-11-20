@@ -314,7 +314,7 @@ csr:
      - peer0.regulatorobserver.example.com
      - auditor.regulatorobserver.example.com
    ca:
-      expiry: 131400h
+      expiry: 720h
       pathlength: 1
 
 #############################################################################

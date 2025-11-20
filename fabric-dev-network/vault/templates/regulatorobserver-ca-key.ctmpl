@@ -1,0 +1,4 @@
+{{- with secret "secret/data/ca/regulatorobserver" -}}
+{{ .Data.data.key_pem }}
+{{- end -}}
+

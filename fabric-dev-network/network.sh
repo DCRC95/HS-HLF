@@ -475,6 +475,13 @@ function networkDown() {
     ${CONTAINER_CLI} run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf addOrg3/fabric-ca/org3/msp addOrg3/fabric-ca/org3/tls-cert.pem addOrg3/fabric-ca/org3/ca-cert.pem addOrg3/fabric-ca/org3/IssuerPublicKey addOrg3/fabric-ca/org3/IssuerRevocationPublicKey addOrg3/fabric-ca/org3/fabric-ca-server.db'
     # remove channel and script artifacts
     ${CONTAINER_CLI} run --rm -v "$(pwd):/data" busybox sh -c 'cd /data && rm -rf channel-artifacts log.txt *.tar.gz'
+    
+    # Warn users that CA databases were reset and identities need re-enrollment
+    warnln "CA databases have been deleted. All previously issued MSP identities are now invalid."
+    warnln "Before running tests, you must re-enroll identities using one of:"
+    warnln "  - ./network.sh up createChannel -ca -c <channel>"
+    warnln "  - ./organizations/fabric-ca/registerEnroll.sh [banka|bankb|consortiumops|regulator|orderer|all]"
+    warnln "See fabric-dev-network/infra/README.md for details."
   fi
 }
 

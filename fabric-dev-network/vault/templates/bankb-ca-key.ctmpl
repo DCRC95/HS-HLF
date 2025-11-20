@@ -1,0 +1,4 @@
+{{- with secret "secret/data/ca/bankb" -}}
+{{ .Data.data.key_pem }}
+{{- end -}}
+
