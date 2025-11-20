@@ -24,6 +24,10 @@ export PEER0_ORG2_CA=${TEST_NETWORK_HOME}/organizations/peerOrganizations/bankb.
 export PEER0_ORG3_CA=${TEST_NETWORK_HOME}/organizations/peerOrganizations/consortiumops.example.com/tlsca/tlsca.consortiumops.example.com-cert.pem
 export PEER0_ORG4_CA=${TEST_NETWORK_HOME}/organizations/peerOrganizations/regulatorobserver.example.com/tlsca/tlsca.regulatorobserver.example.com-cert.pem
 
+# Ensure these optional overrides don't trigger set -u errors
+OVERRIDE_ORG=${OVERRIDE_ORG:-}
+VERBOSE=${VERBOSE:-false}
+
 # Set environment variables for the peer org
 setGlobals() {
   local USING_ORG=""
