@@ -8,8 +8,8 @@ intended as the primary onboarding reference for other agents or contributors.
 
 | Path | Purpose |
 | --- | --- |
-| `fabric-dev-network/` | Customised copy of Fabric’s `test-network`, extended to four peer orgs (BankA, BankB, ConsortiumOps, RegulatorObserver) plus the orderer org. All scripts and configs live here. |
-| `AML AI NETWORK/` | Programme documentation (playbooks, deployment considerations, personas, etc.). Always review `week1_2.md` before making infra changes. |
+| `fabric-dev-network/` | Customised copy of Fabric's `test-network`, extended to five orgs (BankA, BankB, ConsortiumOps, RegulatorObserver, OrdererOrg). All scripts, configs, and chaincode live here. |
+| `AML AI NETWORK/` | Programme documentation (playbooks, deployment considerations, personas, etc.). Review `week3-4_agent_handoff.md` for latest implementation status. |
 | `context.md` | High-level brief that explains the current phase, goals, constraints, and evidence expectations. |
 | `overview.txt` | Scratchpad/notes from earlier planning. |
 
@@ -26,27 +26,57 @@ export FABRIC_CFG_PATH="${PWD}/configtx"
 
 Run those exports *once per shell* before invoking any Fabric CLI command.
 
-## Network Bring-up (4-org topology)
+## Network Bring-up (5-org topology)
 
 1. Ensure Docker is running.
 2. From `fabric-dev-network/`:
 
    ```bash
-   ./network.sh up createChannel -c amlchannel -ca
+   docker-compose -f compose/compose-test-net.yaml up -d
    ```
 
    - Uses CA-issued MSP material already stored under
      `organizations/peerOrganizations/*`.
-   - Creates channel `amlchannel` with all four peer orgs.
-   - Sets anchor peers according to `configtx/configtx.yaml`.
+   - Starts all 5 organizations: BankA, BankB, ConsortiumOps, RegulatorObserver, OrdererOrg
+   - All CAs, peers, and orderer containers will start
 
-3. Verify each org can see the channel (evidence step):
+3. Enroll identities (if not already enrolled):
+
+   ```bash
+   ./organizations/fabric-ca/registerEnroll.sh all
+   ```
+
+4. Create channels (Week 3-4 implementation):
+
+   The network uses three channels:
+   - **model-governance** - BankA, BankB, ConsortiumOps (ModelRegistry, ContributionLedger chaincodes)
+   - **sar-audit** - BankA, BankB, RegulatorObserver (SARAnchor chaincode)
+   - **ops-monitoring** - ConsortiumOps only
+
+   Channel artifacts are pre-generated in `artifacts/channels/week3-4/`. To join peers:
 
    ```bash
    export PATH="${PWD}/fabric-samples/bin:${PATH}"
    export FABRIC_CFG_PATH="${PWD}/fabric-samples/config"
    . scripts/envVar.sh
 
+   # Join model-governance
+   setGlobals 1 && peer channel join -b artifacts/channels/week3-4/model-governance.block
+   setGlobals 2 && peer channel join -b artifacts/channels/week3-4/model-governance.block
+   setGlobals 3 && peer channel join -b artifacts/channels/week3-4/model-governance.block
+
+   # Join sar-audit
+   setGlobals 1 && peer channel join -b artifacts/channels/week3-4/sar-audit.block
+   setGlobals 2 && peer channel join -b artifacts/channels/week3-4/sar-audit.block
+   setGlobals 4 && peer channel join -b artifacts/channels/week3-4/sar-audit.block
+
+   # Join ops-monitoring
+   setGlobals 3 && peer channel join -b artifacts/channels/week3-4/ops-monitoring.block
+   ```
+
+5. Verify channels (evidence step):
+
+   ```bash
    for org in 1 2 3 4; do
      setGlobals $org
      peer channel list
@@ -55,10 +85,10 @@ Run those exports *once per shell* before invoking any Fabric CLI command.
 
    Copy command outputs into `infra/README.md` when collecting evidence.
 
-4. Tear down when finished:
+6. Tear down when finished:
 
    ```bash
-   ./network.sh down
+   docker-compose -f compose/compose-test-net.yaml down
    ```
 
 ## Org Manifest & Evidence
@@ -71,12 +101,15 @@ Run those exports *once per shell* before invoking any Fabric CLI command.
 
 ## Key Scripts
 
-| Script | Description |
-| --- | --- |
-| `network.sh` | Orchestrates bring-up/down, channel creation, chaincode deployment. |
-| `scripts/createChannel.sh` | Generates channel block, joins all four orgs, sets anchor peers. |
-| `scripts/envVar.sh` | Maps org IDs to MSP IDs + localhost addresses (ensures peer CLI reaches the Docker peers). |
-| `scripts/setAnchorPeer.sh` | Fetches channel config and applies anchor peer updates with correct TLS overrides. |
+| Script | Description | Location |
+| --- | --- | --- |
+| `scripts/envVar.sh` | Maps org IDs to MSP IDs + localhost addresses (ensures peer CLI reaches the Docker peers). Use `setGlobals 1` for BankA, `setGlobals 2` for BankB, etc. | `fabric-dev-network/scripts/envVar.sh` |
+| `organizations/fabric-ca/registerEnroll.sh` | Registers and enrolls identities for all organizations. Run with `all` argument to enroll all orgs. | `fabric-dev-network/organizations/fabric-ca/registerEnroll.sh` |
+| `scripts/week3-4_channel_setup/setup_all_channels.sh` | Master script for Week 3-4 channel setup (creates all three channels). | `fabric-dev-network/scripts/week3-4_channel_setup/` |
+| `scripts/createChannel.sh` | Generates channel block, joins orgs, sets anchor peers. | `fabric-dev-network/scripts/createChannel.sh` |
+| `scripts/setAnchorPeer.sh` | Fetches channel config and applies anchor peer updates with correct TLS overrides. | `fabric-dev-network/scripts/setAnchorPeer.sh` |
+| `scripts/snapshotLedger.sh` | Creates ledger snapshots for backup/DR purposes. | `fabric-dev-network/scripts/snapshotLedger.sh` |
+| `scripts/dumpCouchDB.sh` | Exports CouchDB databases for backup. | `fabric-dev-network/scripts/dumpCouchDB.sh` |
 
 ## Backups & DR Artefacts
 
@@ -89,7 +122,7 @@ Run those exports *once per shell* before invoking any Fabric CLI command.
   - Logs `op=couchdb-dump` entries to the same DR log with the CouchDB endpoint and operator ID.
 - **Operator attribution**: both helpers honour `DR_OPERATOR=<name>` (fallback to `$USER`) so each archive/hash/log entry clearly identifies who executed the run.
 - **Evidence trail**: keep `fabric-dev-network/backups/` (~112 KB for the current set) and the updated `fabric-dev-network/infra/README.md`/`infra/ledger-snapshots.log` in sync or mirror them to your regulated object store per policy.
-- **Runtime reminder**: The CouchDB-enabled network is often left running for validation. When testing is complete, run `./network.sh down` (expect the current warning about `peer0.consortiumops`; see `Fixes.md` for context) before handing the environment back.
+- **Runtime reminder**: When testing is complete, run `docker-compose -f compose/compose-test-net.yaml down` before handing the environment back.
 
 ## Modifying the Network
 
@@ -104,92 +137,95 @@ Run those exports *once per shell* before invoking any Fabric CLI command.
    ```
 
 3. Record commands + outputs inside `infra/README.md`.
-4. Re-run `./network.sh up createChannel -c amlchannel -ca` to validate.
+4. Re-run network bring-up and channel join commands to validate.
 
 ## Git & Collaboration Notes
 
 - `fabric-dev-network/` contents are tracked directly (no submodules) so every
   clone has the full network artefacts.
-- `fabric-samples/` is ignored – if it is required, run
-  `./fabric-dev-network/install-fabric.sh` to download upstream samples/binaries.
+- `fabric-samples/` binaries are committed in `fabric-dev-network/fabric-samples/bin/` for convenience.
 - Never commit private keys outside the CA directories already under version
   control; those directories are sanitised for auditors.
+
+## Deployed Chaincodes (Week 3-4)
+
+All chaincodes are deployed using **Chaincode-as-a-Service (CaaS)**:
+
+| Chaincode | Channel | Status | Notes |
+|-----------|---------|--------|-------|
+| ModelRegistry | model-governance | ✅ Operational | Sequence 2, CaaS |
+| ContributionLedger | model-governance | ✅ Operational | Sequence 2, CaaS |
+| SARAnchor | sar-audit | ✅ Operational | Sequence 1, CaaS, deployed as `sar-anchor-v2` |
+
+**Important:** SARAnchor is deployed as `sar-anchor-v2` (not `sar-anchor`) due to stale channel state. See `fabric-dev-network/chaincode/sar-anchor/README_NAMING.md` for details.
+
+**Documentation:**
+- Deployment status: `fabric-dev-network/docs/caas_deployment_progress.md`
+- Smoke test results: `fabric-dev-network/docs/smoke_test_results.md`
+- Chaincode naming reference: `fabric-dev-network/docs/chaincode_naming_reference.md`
 
 ## Need Help?
 
 1. Read `context.md` for current objectives.
-2. Review `AML AI NETWORK/week1_2.md` for the active playbook.
-3. Check `infra/README.md` to understand what evidence already exists.
-4. When in doubt, keep the evidence trail updated and prefer extending existing
+2. Review `AML AI NETWORK/week3-4_agent_handoff.md` for the latest implementation status.
+3. Check `fabric-dev-network/docs/caas_deployment_progress.md` for chaincode deployment details.
+4. Check `infra/README.md` to understand what evidence already exists.
+5. When in doubt, keep the evidence trail updated and prefer extending existing
    patterns over introducing new tooling.
 
 Happy hacking!
 
-# Running the test network
+## Using Peer Commands
 
-You can use the `./network.sh` script to stand up a simple Fabric test network. The test network has two peer organizations with one peer each and a single node raft ordering service. You can also use the `./network.sh` script to create channels and deploy chaincode. For more information, see [Using the Fabric test network](https://hyperledger-fabric.readthedocs.io/en/latest/test_network.html). The test network is being introduced in Fabric v2.0 as the long term replacement for the `first-network` sample.
-
-If you are planning to run the test network with consensus type BFT then please pass `-bft` flag as input to the `network.sh` script when creating the channel. This sample also supports the use of consensus type BFT and CA together.
-That is to create a network use:
-```bash
-./network.sh up -bft
-```
-
-To create a channel use:
+To use `peer` commands, set up the environment first:
 
 ```bash
-./network.sh createChannel -bft
+cd fabric-dev-network
+export PATH="${PWD}/fabric-samples/bin:${PATH}"
+export FABRIC_CFG_PATH="${PWD}/fabric-samples/config"
+. scripts/envVar.sh
 ```
 
-To restart a running network use:
+Then use `setGlobals` to switch between organizations:
+- `setGlobals 1` - BankA (BankAMSP)
+- `setGlobals 2` - BankB (BankBMSP)
+- `setGlobals 3` - ConsortiumOps (ConsortiumOpsMSP)
+- `setGlobals 4` - RegulatorObserver (RegulatorObserverMSP)
 
+Example:
 ```bash
-./network.sh restart -bft
+setGlobals 1
+peer channel list
+peer lifecycle chaincode querycommitted --channelID model-governance
 ```
-
-Note that running the createChannel command will start the network, if it is not already running.
-
-Before you can deploy the test network, you need to follow the instructions to [Install the Samples, Binaries and Docker Images](https://hyperledger-fabric.readthedocs.io/en/latest/install.html) in the Hyperledger Fabric documentation.
-
-## Using the Peer commands
-
-The `setOrgEnv.sh` script can be used to set up the environment variables for the organizations, this will help to be able to use the `peer` commands directly.
-
-First, ensure that the peer binaries are on your path, and the Fabric Config path is set assuming that you're in the `test-network` directory.
-
-```bash
- export PATH=$PATH:$(realpath ../bin)
- export FABRIC_CFG_PATH=$(realpath ../config)
-```
-
-You can then set up the environment variables for each organization. The `./setOrgEnv.sh` command is designed to be run as follows.
-
-```bash
-export $(./setOrgEnv.sh Org2 | xargs)
-```
-
-(Note bash v4 is required for the scripts.)
-
-You will now be able to run the `peer` commands in the context of Org2. If a different command prompt, you can run the same command with Org1 instead.
-The `setOrgEnv` script outputs a series of `<name>=<value>` strings. These can then be fed into the export command for your current shell.
 
 ## Chaincode-as-a-service
 
-To learn more about how to use the improvements to the Chaincode-as-a-service please see this [tutorial](./test-network/../CHAINCODE_AS_A_SERVICE_TUTORIAL.md). It is expected that this will move to augment the tutorial in the [Hyperledger Fabric ReadTheDocs](https://hyperledger-fabric.readthedocs.io/en/release-2.4/cc_service.html)
+All chaincodes in this network are deployed using **Chaincode-as-a-Service (CaaS)**. This means:
+- Chaincode runs in separate Docker containers
+- No Docker socket access required from peers
+- Easier debugging and development
+- Better suited for Kubernetes deployments
+
+**Current Status:**
+- ✅ All three chaincodes deployed as CaaS
+- ✅ All CaaS containers running and operational
+- ✅ See `fabric-dev-network/docs/caas_deployment_progress.md` for details
+
+To learn more about CaaS, see the [tutorial](./CHAINCODE_AS_A_SERVICE_TUTORIAL.md). It is expected that this will move to augment the tutorial in the [Hyperledger Fabric ReadTheDocs](https://hyperledger-fabric.readthedocs.io/en/release-2.4/cc_service.html)
 
 
-## Podman
+## Podman Support
 
 *Note - podman support should be considered experimental but the following has been reported to work with podman 4.1.1 on Mac. If you wish to use podman a LinuxVM is recommended.*
 
-Fabric's `install-fabric.sh` script has been enhanced to support using `podman` to pull down images and tag them rather than docker. The images are the same, just pulled differently. Simply specify the 'podman' argument when running the `install-fabric.sh` script. 
-
-Similarly, the `network.sh` script has been enhanced so that it can use `podman` and `podman-compose` instead of docker. Just set the environment variable `CONTAINER_CLI` to `podman` before running the `network.sh` script:
+To use podman instead of docker, set the `CONTAINER_CLI` environment variable:
 
 ```bash
-CONTAINER_CLI=podman ./network.sh up
-````
+export CONTAINER_CLI=podman
+docker-compose -f compose/compose-test-net.yaml up -d
+```
 
-As there is no Docker-Daemon when using podman, only the `./network.sh deployCCAAS` command will work. Following the Chaincode-as-a-service Tutorial above should work. 
+Note: CaaS chaincode deployment works with podman since it doesn't require Docker socket access. 
 
 

@@ -1,0 +1,83 @@
+# CI Pipeline for ModelRegistry Chaincode
+# Author: Week 3-4 Implementation
+# Date: 2025-11-28
+# Purpose: CI pipeline for ModelRegistry chaincode (phase_1_plan_details.md:62, 73-77)
+name: ModelRegistry Chaincode CI
+
+on:
+  push:
+    paths:
+      - 'chaincode/model-registry/**'
+  pull_request:
+    paths:
+      - 'chaincode/model-registry/**'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        working-directory: chaincode/model-registry
+        run: npm ci
+      - name: Run ESLint
+        working-directory: chaincode/model-registry
+        run: npm run lint
+        continue-on-error: false
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        working-directory: chaincode/model-registry
+        run: npm ci
+      - name: Run tests
+        working-directory: chaincode/model-registry
+        run: npm test
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        with:
+          files: chaincode/model-registry/coverage/lcov.info
+          flags: model-registry
+      - name: Archive test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results-model-registry
+          path: chaincode/model-registry/coverage/
+
+  package:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        working-directory: chaincode/model-registry
+        run: npm ci
+      - name: Package chaincode
+        working-directory: chaincode/model-registry
+        run: |
+          mkdir -p ../../artifacts/chaincode/model-registry
+          tar -czf ../../artifacts/chaincode/model-registry/model-registry-${GITHUB_SHA}.tgz \
+            src/ package.json package-lock.json
+      - name: Generate SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          path: chaincode/model-registry
+          format: spdx-json
+          output-file: artifacts/chaincode/model-registry/model-registry-sbom.json
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: chaincode-package-model-registry
+          path: artifacts/chaincode/model-registry/
+

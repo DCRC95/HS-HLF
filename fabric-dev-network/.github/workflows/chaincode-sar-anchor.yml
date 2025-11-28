@@ -1,0 +1,77 @@
+# CI Pipeline for SARAnchor Chaincode
+# Author: Week 3-4 Implementation
+# Date: 2025-11-28
+# Purpose: CI pipeline for SARAnchor chaincode (phase_1_plan_details.md:62, 73-77)
+name: SARAnchor Chaincode CI
+
+on:
+  push:
+    paths:
+      - 'chaincode/sar-anchor/**'
+  pull_request:
+    paths:
+      - 'chaincode/sar-anchor/**'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        working-directory: chaincode/sar-anchor
+        run: npm ci
+      - name: Run ESLint
+        working-directory: chaincode/sar-anchor
+        run: npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        working-directory: chaincode/sar-anchor
+        run: npm ci
+      - name: Run tests
+        working-directory: chaincode/sar-anchor
+        run: npm test
+      - name: Archive test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results-sar-anchor
+          path: chaincode/sar-anchor/coverage/
+
+  package:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        working-directory: chaincode/sar-anchor
+        run: npm ci
+      - name: Package chaincode
+        working-directory: chaincode/sar-anchor
+        run: |
+          mkdir -p ../../artifacts/chaincode/sar-anchor
+          tar -czf ../../artifacts/chaincode/sar-anchor/sar-anchor-${GITHUB_SHA}.tgz \
+            src/ package.json package-lock.json
+      - name: Generate SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          path: chaincode/sar-anchor
+          format: spdx-json
+          output-file: artifacts/chaincode/sar-anchor/sar-anchor-sbom.json
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: chaincode-package-sar-anchor
+          path: artifacts/chaincode/sar-anchor/
+

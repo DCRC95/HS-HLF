@@ -1,0 +1,77 @@
+# CI Pipeline for ContributionLedger Chaincode
+# Author: Week 3-4 Implementation
+# Date: 2025-11-28
+# Purpose: CI pipeline for ContributionLedger chaincode (phase_1_plan_details.md:62, 73-77)
+name: ContributionLedger Chaincode CI
+
+on:
+  push:
+    paths:
+      - 'chaincode/contribution-ledger/**'
+  pull_request:
+    paths:
+      - 'chaincode/contribution-ledger/**'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        working-directory: chaincode/contribution-ledger
+        run: npm ci
+      - name: Run ESLint
+        working-directory: chaincode/contribution-ledger
+        run: npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        working-directory: chaincode/contribution-ledger
+        run: npm ci
+      - name: Run tests
+        working-directory: chaincode/contribution-ledger
+        run: npm test
+      - name: Archive test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results-contribution-ledger
+          path: chaincode/contribution-ledger/coverage/
+
+  package:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        working-directory: chaincode/contribution-ledger
+        run: npm ci
+      - name: Package chaincode
+        working-directory: chaincode/contribution-ledger
+        run: |
+          mkdir -p ../../artifacts/chaincode/contribution-ledger
+          tar -czf ../../artifacts/chaincode/contribution-ledger/contribution-ledger-${GITHUB_SHA}.tgz \
+            src/ package.json package-lock.json
+      - name: Generate SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          path: chaincode/contribution-ledger
+          format: spdx-json
+          output-file: artifacts/chaincode/contribution-ledger/contribution-ledger-sbom.json
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: chaincode-package-contribution-ledger
+          path: artifacts/chaincode/contribution-ledger/
+

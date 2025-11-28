@@ -1,0 +1,35 @@
+{
+  "timestamp": "2025-11-28 12:16:33 UTC",
+  "author": "Week 3-4 Implementation",
+  "purpose": "Document channel policy changes and configurations",
+  "changes": [
+    {
+      "channel": "model-governance",
+      "chaincode": "ModelRegistry",
+      "endorsement_policy": "AND('BankAMSP.peer', 'BankBMSP.peer')",
+      "description": "Requires both BankA and BankB to endorse model registry updates",
+      "applied_at": "2025-11-28 12:16:33 UTC"
+    },
+    {
+      "channel": "model-governance",
+      "chaincode": "ContributionLedger",
+      "endorsement_policy": "AND('BankAMSP.peer', 'BankBMSP.peer')",
+      "description": "Requires both BankA and BankB to endorse federated learning contribution records",
+      "applied_at": "2025-11-28 12:16:33 UTC"
+    },
+    {
+      "channel": "sar-audit",
+      "chaincode": "SARAnchor",
+      "endorsement_policy": "OR('BankAMSP.peer', 'BankBMSP.peer')",
+      "acl_writers": ["BankAMSP", "BankBMSP"],
+      "acl_readers": ["BankAMSP", "BankBMSP", "RegulatorObserverMSP"],
+      "description": "Banks can write SAR metadata independently; regulator has read-only access",
+      "applied_at": "2025-11-28 12:16:33 UTC"
+    }
+  ],
+  "notes": [
+    "Endorsement policies are enforced at chaincode definition time",
+    "ACL policies are enforced at channel configuration level",
+    "Private data collections provide additional access control for SAR metadata"
+  ]
+}
