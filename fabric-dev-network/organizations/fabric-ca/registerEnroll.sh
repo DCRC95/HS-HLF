@@ -197,7 +197,8 @@ function create_orderer_org() {
 
     infoln "Generating TLS certs for ${ord_host}"
     set -x
-    fabric-ca-client enroll -u "https://${ord}:${ord}pw@localhost:9054" --caname ca-orderer -M "${orderer_path}/orderers/${ord_host}/tls" --enrollment.profile tls --csr.hosts "${ord_host}" --csr.hosts localhost --tls.certfiles "${ca_cert}"
+    # Include both orderer.example.com and orderer.orderer.example.com for compatibility
+    fabric-ca-client enroll -u "https://${ord}:${ord}pw@localhost:9054" --caname ca-orderer -M "${orderer_path}/orderers/${ord_host}/tls" --enrollment.profile tls --csr.hosts "${ord_host}" --csr.hosts "orderer.example.com" --csr.hosts localhost --tls.certfiles "${ca_cert}"
     { set +x; } 2>/dev/null
     cp "${orderer_path}/orderers/${ord_host}/tls/tlscacerts/"* "${orderer_path}/orderers/${ord_host}/tls/ca.crt"
     cp "${orderer_path}/orderers/${ord_host}/tls/signcerts/"* "${orderer_path}/orderers/${ord_host}/tls/server.crt"

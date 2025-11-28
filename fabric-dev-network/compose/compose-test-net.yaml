@@ -35,7 +35,8 @@ services:
       - ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE=/var/hyperledger/orderer/tls/server.crt
       - ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY=/var/hyperledger/orderer/tls/server.key
       - ORDERER_GENERAL_CLUSTER_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
-      - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
+      - ORDERER_GENERAL_BOOTSTRAPMETHOD=file
+      - ORDERER_GENERAL_BOOTSTRAPFILE=/var/hyperledger/orderer/orderer.genesis.block
       - ORDERER_CHANNELPARTICIPATION_ENABLED=true
       - ORDERER_ADMIN_TLS_ENABLED=true
       - ORDERER_ADMIN_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
@@ -50,6 +51,7 @@ services:
     volumes:
         - ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/msp:/var/hyperledger/orderer/msp
         - ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/:/var/hyperledger/orderer/tls
+        - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
         - orderer.example.com:/var/hyperledger/production/orderer
     ports:
       - 7050:7050
@@ -88,6 +90,7 @@ services:
       - CORE_CHAINCODE_EXECUTETIMEOUT=300s
     volumes:
       - ../organizations/peerOrganizations/banka.example.com/peers/peer0.banka.example.com:/etc/hyperledger/fabric
+      - ../compose/docker/peercfg:/etc/hyperledger/peercfg
       - peer0.banka.example.com:/var/hyperledger/production
     working_dir: /root
     command: peer node start
@@ -127,6 +130,7 @@ services:
       - CORE_CHAINCODE_EXECUTETIMEOUT=300s
     volumes:
       - ../organizations/peerOrganizations/bankb.example.com/peers/peer0.bankb.example.com:/etc/hyperledger/fabric
+      - ../compose/docker/peercfg:/etc/hyperledger/peercfg
       - peer0.bankb.example.com:/var/hyperledger/production
     working_dir: /root
     command: peer node start
@@ -165,6 +169,7 @@ services:
       - CORE_CHAINCODE_EXECUTETIMEOUT=300s
     volumes:
       - ../organizations/peerOrganizations/consortiumops.example.com/peers/peer0.consortiumops.example.com:/etc/hyperledger/fabric
+      - ../compose/docker/peercfg:/etc/hyperledger/peercfg
       - peer0.consortiumops.example.com:/var/hyperledger/production
     working_dir: /root
     command: peer node start
@@ -203,6 +208,7 @@ services:
       - CORE_CHAINCODE_EXECUTETIMEOUT=300s
     volumes:
       - ../organizations/peerOrganizations/regulatorobserver.example.com/peers/peer0.regulatorobserver.example.com:/etc/hyperledger/fabric
+      - ../compose/docker/peercfg:/etc/hyperledger/peercfg
       - peer0.regulatorobserver.example.com:/var/hyperledger/production
     working_dir: /root
     command: peer node start

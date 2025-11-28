@@ -1,0 +1,11 @@
+{
+  "channel_name": "sar-audit",
+  "profile": "SARAuditChannel",
+  "consortium": "AMLConsortium",
+  "tx_file": "/Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/sar-audit.tx",
+  "tx_size_bytes": 500,
+  "tx_sha256": "7509f331c30233d11c0f026faa4e65b90ada974611ed83f4491fd47ce7e33b7e",
+  "generated_at": "2025-11-28 12:16:10 UTC",
+  "configtx_path": "/Users/rhys/fabric-dev/fabric-dev-network/configtx",
+  "note": "Genesis block will be created when channel is created via peer channel create"
+}

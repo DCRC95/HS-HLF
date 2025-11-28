@@ -1,0 +1,11 @@
+{
+  "channel_name": "model-governance",
+  "profile": "ModelGovernanceChannel",
+  "consortium": "AMLConsortium",
+  "tx_file": "/Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/model-governance.tx",
+  "tx_size_bytes": 506,
+  "tx_sha256": "98366d994afe5c2c29e07505c8fedd38c01bdf75154896aab47080d0ea8bfd5a",
+  "generated_at": "2025-11-28 12:16:10 UTC",
+  "configtx_path": "/Users/rhys/fabric-dev/fabric-dev-network/configtx",
+  "note": "Genesis block will be created when channel is created via peer channel create"
+}

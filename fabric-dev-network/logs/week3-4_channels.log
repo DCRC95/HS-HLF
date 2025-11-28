@@ -1,0 +1,1094 @@
+[2025-11-28 12:59:35] === Starting MSP Verification ===
+[2025-11-28 12:59:35] Verifying MSP for BankA (BankAMSP)
+[2025-11-28 12:59:35]   Checking admincerts...
+[2025-11-28 12:59:35]     WARNING: No admin certificates found
+[2025-11-28 12:59:35]   Checking cacerts...
+[2025-11-28 12:59:35]     Found 1 CA certificate(s)
+[2025-11-28 12:59:35]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=BankA, CN=ca-banka
+[2025-11-28 12:59:35]   Checking tlscacerts...
+[2025-11-28 12:59:35]     Found 0 TLS CA certificate(s)
+[2025-11-28 12:59:35]   Checking OU separation...
+[2025-11-28 12:59:35]     Found config.yaml
+[2025-11-28 12:59:35]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 12:59:35]   Checking peer certificates...
+[2025-11-28 12:59:35]     Found 2 peer(s)
+[2025-11-28 12:59:35]       Checking peer: peer0.banka.example.com
+[2025-11-28 12:59:35]         TLS cert: ✅ Present
+[2025-11-28 12:59:35]         MSP: ✅ Present
+[2025-11-28 12:59:35]       Checking peer: peer1.banka.example.com
+[2025-11-28 12:59:35]         TLS cert: ✅ Present
+[2025-11-28 12:59:35]         MSP: ✅ Present
+[2025-11-28 12:59:35]   Checking anchor peer configuration...
+[2025-11-28 12:59:35]     Anchor peer configured: Host::7051
+[2025-11-28 12:59:35]   ✅ Verification complete for BankA
+[2025-11-28 12:59:35] Verifying MSP for BankB (BankBMSP)
+[2025-11-28 12:59:35]   Checking admincerts...
+[2025-11-28 12:59:35]     WARNING: No admin certificates found
+[2025-11-28 12:59:35]   Checking cacerts...
+[2025-11-28 12:59:35]     Found 1 CA certificate(s)
+[2025-11-28 12:59:35]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=BankB, CN=ca-bankb
+[2025-11-28 12:59:35]   Checking tlscacerts...
+[2025-11-28 12:59:35]     Found 0 TLS CA certificate(s)
+[2025-11-28 12:59:35]   Checking OU separation...
+[2025-11-28 12:59:35]     Found config.yaml
+[2025-11-28 12:59:35]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 12:59:35]   Checking peer certificates...
+[2025-11-28 12:59:35]     Found 2 peer(s)
+[2025-11-28 12:59:35]       Checking peer: peer0.bankb.example.com
+[2025-11-28 12:59:35]         TLS cert: ✅ Present
+[2025-11-28 12:59:35]         MSP: ✅ Present
+[2025-11-28 12:59:35]       Checking peer: peer1.bankb.example.com
+[2025-11-28 12:59:35]         TLS cert: ✅ Present
+[2025-11-28 12:59:35]         MSP: ✅ Present
+[2025-11-28 12:59:35]   Checking anchor peer configuration...
+[2025-11-28 12:59:35]     Anchor peer configured: Host::9051
+[2025-11-28 12:59:35]   ✅ Verification complete for BankB
+[2025-11-28 12:59:35] Verifying MSP for ConsortiumOps (ConsortiumOpsMSP)
+[2025-11-28 12:59:35]   Checking admincerts...
+[2025-11-28 12:59:35]     WARNING: No admin certificates found
+[2025-11-28 12:59:35]   Checking cacerts...
+[2025-11-28 12:59:35]     Found 1 CA certificate(s)
+[2025-11-28 12:59:35]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=ConsortiumOps, CN=ca-consortiumops
+[2025-11-28 12:59:35]   Checking tlscacerts...
+[2025-11-28 12:59:35]     Found 0 TLS CA certificate(s)
+[2025-11-28 12:59:35]   Checking OU separation...
+[2025-11-28 12:59:35]     Found config.yaml
+[2025-11-28 12:59:35]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 12:59:35]   Checking peer certificates...
+[2025-11-28 12:59:35]     Found 1 peer(s)
+[2025-11-28 12:59:35]       Checking peer: peer0.consortiumops.example.com
+[2025-11-28 12:59:35]         TLS cert: ✅ Present
+[2025-11-28 12:59:35]         MSP: ✅ Present
+[2025-11-28 12:59:35]   Checking anchor peer configuration...
+[2025-11-28 12:59:35]     Anchor peer configured: Host::11051
+[2025-11-28 12:59:35]   ✅ Verification complete for ConsortiumOps
+[2025-11-28 12:59:35] Verifying MSP for RegulatorObserver (RegulatorObserverMSP)
+[2025-11-28 12:59:35]   Checking admincerts...
+[2025-11-28 12:59:35]     WARNING: No admin certificates found
+[2025-11-28 12:59:35]   Checking cacerts...
+[2025-11-28 12:59:35]     Found 1 CA certificate(s)
+[2025-11-28 12:59:35]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=RegulatorObserver, CN=ca-regulatorobserver
+[2025-11-28 12:59:35]   Checking tlscacerts...
+[2025-11-28 12:59:35]     Found 0 TLS CA certificate(s)
+[2025-11-28 12:59:35]   Checking OU separation...
+[2025-11-28 12:59:35]     Found config.yaml
+[2025-11-28 12:59:35]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 12:59:35]   Checking peer certificates...
+[2025-11-28 12:59:35]     Found 1 peer(s)
+[2025-11-28 12:59:35]       Checking peer: peer0.regulatorobserver.example.com
+[2025-11-28 12:59:35]         TLS cert: ✅ Present
+[2025-11-28 12:59:35]         MSP: ✅ Present
+[2025-11-28 12:59:35]   Checking anchor peer configuration...
+[2025-11-28 12:59:35]     Anchor peer configured: Host::12051
+[2025-11-28 12:59:35]   ✅ Verification complete for RegulatorObserver
+[2025-11-28 12:59:35] Verifying Orderer MSP
+[2025-11-28 12:59:35]   Orderer MSP directory found
+[2025-11-28 12:59:35]   Found 1 orderer(s)
+[2025-11-28 12:59:35]     Checking orderer: orderer.orderer.example.com
+[2025-11-28 12:59:35]       TLS cert: ✅ Present
+[2025-11-28 12:59:35] === MSP Verification Complete ===
+[2025-11-28 13:04:11] === Starting Policy Configuration ===
+[2025-11-28 13:04:11] === Documenting Endorsement Policies ===
+[2025-11-28 13:04:11] Endorsement policies documented in /Users/rhys/fabric-dev/fabric-dev-network/docs/policy_updates/week3-4/endorsement_policies.md
+[2025-11-28 13:04:11] === Creating Policy Update Documentation ===
+[2025-11-28 13:04:11] Policy documentation created: /Users/rhys/fabric-dev/fabric-dev-network/docs/policy_updates/week3-4/policy_changes.json
+[2025-11-28 13:04:11] 
+[2025-11-28 13:04:11] === Policy Configuration Complete ===
+[2025-11-28 13:04:11] Note: Actual endorsement policies are applied during chaincode definition
+[2025-11-28 13:04:11] ACL policies are configured at channel level and enforced by Fabric
+[2025-11-28 13:14:03] ==========================================
+[2025-11-28 13:14:03] Week 3-4 Channel Setup - Master Script
+[2025-11-28 13:14:03] ==========================================
+[2025-11-28 13:14:03] 
+[2025-11-28 13:14:03] Step 1/4: Verifying MSP material...
+[2025-11-28 13:14:03] === Starting MSP Verification ===
+[2025-11-28 13:14:03] Verifying MSP for BankA (BankAMSP)
+[2025-11-28 13:14:03]   Checking admincerts...
+[2025-11-28 13:14:03]     WARNING: No admin certificates found
+[2025-11-28 13:14:03]   Checking cacerts...
+[2025-11-28 13:14:03]     Found 1 CA certificate(s)
+[2025-11-28 13:14:03]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=BankA, CN=ca-banka
+[2025-11-28 13:14:03]   Checking tlscacerts...
+[2025-11-28 13:14:03]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:14:03]   Checking OU separation...
+[2025-11-28 13:14:03]     Found config.yaml
+[2025-11-28 13:14:03]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:14:03]   Checking peer certificates...
+[2025-11-28 13:14:03]     Found 2 peer(s)
+[2025-11-28 13:14:03]       Checking peer: peer0.banka.example.com
+[2025-11-28 13:14:03]         TLS cert: ✅ Present
+[2025-11-28 13:14:03]         MSP: ✅ Present
+[2025-11-28 13:14:03]       Checking peer: peer1.banka.example.com
+[2025-11-28 13:14:03]         TLS cert: ✅ Present
+[2025-11-28 13:14:03]         MSP: ✅ Present
+[2025-11-28 13:14:03]   Checking anchor peer configuration...
+[2025-11-28 13:14:03]     Anchor peer configured: Host::7051
+[2025-11-28 13:14:03]   ✅ Verification complete for BankA
+[2025-11-28 13:14:03] Verifying MSP for BankB (BankBMSP)
+[2025-11-28 13:14:03]   Checking admincerts...
+[2025-11-28 13:14:03]     WARNING: No admin certificates found
+[2025-11-28 13:14:03]   Checking cacerts...
+[2025-11-28 13:14:03]     Found 1 CA certificate(s)
+[2025-11-28 13:14:03]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=BankB, CN=ca-bankb
+[2025-11-28 13:14:03]   Checking tlscacerts...
+[2025-11-28 13:14:03]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:14:03]   Checking OU separation...
+[2025-11-28 13:14:03]     Found config.yaml
+[2025-11-28 13:14:03]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:14:03]   Checking peer certificates...
+[2025-11-28 13:14:03]     Found 2 peer(s)
+[2025-11-28 13:14:03]       Checking peer: peer0.bankb.example.com
+[2025-11-28 13:14:03]         TLS cert: ✅ Present
+[2025-11-28 13:14:03]         MSP: ✅ Present
+[2025-11-28 13:14:03]       Checking peer: peer1.bankb.example.com
+[2025-11-28 13:14:03]         TLS cert: ✅ Present
+[2025-11-28 13:14:03]         MSP: ✅ Present
+[2025-11-28 13:14:03]   Checking anchor peer configuration...
+[2025-11-28 13:14:03]     Anchor peer configured: Host::9051
+[2025-11-28 13:14:03]   ✅ Verification complete for BankB
+[2025-11-28 13:14:03] Verifying MSP for ConsortiumOps (ConsortiumOpsMSP)
+[2025-11-28 13:14:03]   Checking admincerts...
+[2025-11-28 13:14:03]     WARNING: No admin certificates found
+[2025-11-28 13:14:03]   Checking cacerts...
+[2025-11-28 13:14:03]     Found 1 CA certificate(s)
+[2025-11-28 13:14:03]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=ConsortiumOps, CN=ca-consortiumops
+[2025-11-28 13:14:03]   Checking tlscacerts...
+[2025-11-28 13:14:03]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:14:03]   Checking OU separation...
+[2025-11-28 13:14:03]     Found config.yaml
+[2025-11-28 13:14:03]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:14:03]   Checking peer certificates...
+[2025-11-28 13:14:03]     Found 1 peer(s)
+[2025-11-28 13:14:03]       Checking peer: peer0.consortiumops.example.com
+[2025-11-28 13:14:03]         TLS cert: ✅ Present
+[2025-11-28 13:14:03]         MSP: ✅ Present
+[2025-11-28 13:14:03]   Checking anchor peer configuration...
+[2025-11-28 13:14:03]     Anchor peer configured: Host::11051
+[2025-11-28 13:14:03]   ✅ Verification complete for ConsortiumOps
+[2025-11-28 13:14:03] Verifying MSP for RegulatorObserver (RegulatorObserverMSP)
+[2025-11-28 13:14:03]   Checking admincerts...
+[2025-11-28 13:14:03]     WARNING: No admin certificates found
+[2025-11-28 13:14:03]   Checking cacerts...
+[2025-11-28 13:14:03]     Found 1 CA certificate(s)
+[2025-11-28 13:14:03]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=RegulatorObserver, CN=ca-regulatorobserver
+[2025-11-28 13:14:03]   Checking tlscacerts...
+[2025-11-28 13:14:03]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:14:03]   Checking OU separation...
+[2025-11-28 13:14:03]     Found config.yaml
+[2025-11-28 13:14:03]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:14:03]   Checking peer certificates...
+[2025-11-28 13:14:03]     Found 1 peer(s)
+[2025-11-28 13:14:03]       Checking peer: peer0.regulatorobserver.example.com
+[2025-11-28 13:14:03]         TLS cert: ✅ Present
+[2025-11-28 13:14:03]         MSP: ✅ Present
+[2025-11-28 13:14:03]   Checking anchor peer configuration...
+[2025-11-28 13:14:03]     Anchor peer configured: Host::12051
+[2025-11-28 13:14:03]   ✅ Verification complete for RegulatorObserver
+[2025-11-28 13:14:03] Verifying Orderer MSP
+[2025-11-28 13:14:03]   Orderer MSP directory found
+[2025-11-28 13:14:03]   Found 1 orderer(s)
+[2025-11-28 13:14:03]     Checking orderer: orderer.orderer.example.com
+[2025-11-28 13:14:03]       TLS cert: ✅ Present
+[2025-11-28 13:14:03] === MSP Verification Complete ===
+[2025-11-28 13:14:03] ✅ MSP verification complete
+[2025-11-28 13:14:03] 
+[2025-11-28 13:14:03] Step 2/4: Generating channel artifacts...
+[2025-11-28 13:14:03] === Starting Channel Artifact Generation ===
+[2025-11-28 13:14:03] ERROR: configtxgen not found in PATH
+[2025-11-28 13:14:04] Please ensure Fabric binaries are installed and in PATH
+[2025-11-28 13:14:56] ==========================================
+[2025-11-28 13:14:56] Week 3-4 Channel Setup - Master Script
+[2025-11-28 13:14:56] ==========================================
+[2025-11-28 13:14:56] 
+[2025-11-28 13:14:56] Step 1/4: Verifying MSP material...
+[2025-11-28 13:14:56] === Starting MSP Verification ===
+[2025-11-28 13:14:56] Verifying MSP for BankA (BankAMSP)
+[2025-11-28 13:14:56]   Checking admincerts...
+[2025-11-28 13:14:56]     WARNING: No admin certificates found
+[2025-11-28 13:14:56]   Checking cacerts...
+[2025-11-28 13:14:56]     Found 1 CA certificate(s)
+[2025-11-28 13:14:56]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=BankA, CN=ca-banka
+[2025-11-28 13:14:56]   Checking tlscacerts...
+[2025-11-28 13:14:56]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:14:56]   Checking OU separation...
+[2025-11-28 13:14:56]     Found config.yaml
+[2025-11-28 13:14:56]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:14:56]   Checking peer certificates...
+[2025-11-28 13:14:56]     Found 2 peer(s)
+[2025-11-28 13:14:56]       Checking peer: peer0.banka.example.com
+[2025-11-28 13:14:56]         TLS cert: ✅ Present
+[2025-11-28 13:14:56]         MSP: ✅ Present
+[2025-11-28 13:14:56]       Checking peer: peer1.banka.example.com
+[2025-11-28 13:14:56]         TLS cert: ✅ Present
+[2025-11-28 13:14:56]         MSP: ✅ Present
+[2025-11-28 13:14:56]   Checking anchor peer configuration...
+[2025-11-28 13:14:56]     Anchor peer configured: Host::7051
+[2025-11-28 13:14:56]   ✅ Verification complete for BankA
+[2025-11-28 13:14:56] Verifying MSP for BankB (BankBMSP)
+[2025-11-28 13:14:56]   Checking admincerts...
+[2025-11-28 13:14:56]     WARNING: No admin certificates found
+[2025-11-28 13:14:56]   Checking cacerts...
+[2025-11-28 13:14:56]     Found 1 CA certificate(s)
+[2025-11-28 13:14:57]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=BankB, CN=ca-bankb
+[2025-11-28 13:14:57]   Checking tlscacerts...
+[2025-11-28 13:14:57]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:14:57]   Checking OU separation...
+[2025-11-28 13:14:57]     Found config.yaml
+[2025-11-28 13:14:57]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:14:57]   Checking peer certificates...
+[2025-11-28 13:14:57]     Found 2 peer(s)
+[2025-11-28 13:14:57]       Checking peer: peer0.bankb.example.com
+[2025-11-28 13:14:57]         TLS cert: ✅ Present
+[2025-11-28 13:14:57]         MSP: ✅ Present
+[2025-11-28 13:14:57]       Checking peer: peer1.bankb.example.com
+[2025-11-28 13:14:57]         TLS cert: ✅ Present
+[2025-11-28 13:14:57]         MSP: ✅ Present
+[2025-11-28 13:14:57]   Checking anchor peer configuration...
+[2025-11-28 13:14:57]     Anchor peer configured: Host::9051
+[2025-11-28 13:14:57]   ✅ Verification complete for BankB
+[2025-11-28 13:14:57] Verifying MSP for ConsortiumOps (ConsortiumOpsMSP)
+[2025-11-28 13:14:57]   Checking admincerts...
+[2025-11-28 13:14:57]     WARNING: No admin certificates found
+[2025-11-28 13:14:57]   Checking cacerts...
+[2025-11-28 13:14:57]     Found 1 CA certificate(s)
+[2025-11-28 13:14:57]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=ConsortiumOps, CN=ca-consortiumops
+[2025-11-28 13:14:57]   Checking tlscacerts...
+[2025-11-28 13:14:57]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:14:57]   Checking OU separation...
+[2025-11-28 13:14:57]     Found config.yaml
+[2025-11-28 13:14:57]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:14:57]   Checking peer certificates...
+[2025-11-28 13:14:57]     Found 1 peer(s)
+[2025-11-28 13:14:57]       Checking peer: peer0.consortiumops.example.com
+[2025-11-28 13:14:57]         TLS cert: ✅ Present
+[2025-11-28 13:14:57]         MSP: ✅ Present
+[2025-11-28 13:14:57]   Checking anchor peer configuration...
+[2025-11-28 13:14:57]     Anchor peer configured: Host::11051
+[2025-11-28 13:14:57]   ✅ Verification complete for ConsortiumOps
+[2025-11-28 13:14:57] Verifying MSP for RegulatorObserver (RegulatorObserverMSP)
+[2025-11-28 13:14:57]   Checking admincerts...
+[2025-11-28 13:14:57]     WARNING: No admin certificates found
+[2025-11-28 13:14:57]   Checking cacerts...
+[2025-11-28 13:14:57]     Found 1 CA certificate(s)
+[2025-11-28 13:14:57]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=RegulatorObserver, CN=ca-regulatorobserver
+[2025-11-28 13:14:57]   Checking tlscacerts...
+[2025-11-28 13:14:57]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:14:57]   Checking OU separation...
+[2025-11-28 13:14:57]     Found config.yaml
+[2025-11-28 13:14:57]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:14:57]   Checking peer certificates...
+[2025-11-28 13:14:57]     Found 1 peer(s)
+[2025-11-28 13:14:57]       Checking peer: peer0.regulatorobserver.example.com
+[2025-11-28 13:14:57]         TLS cert: ✅ Present
+[2025-11-28 13:14:57]         MSP: ✅ Present
+[2025-11-28 13:14:57]   Checking anchor peer configuration...
+[2025-11-28 13:14:57]     Anchor peer configured: Host::12051
+[2025-11-28 13:14:57]   ✅ Verification complete for RegulatorObserver
+[2025-11-28 13:14:57] Verifying Orderer MSP
+[2025-11-28 13:14:57]   Orderer MSP directory found
+[2025-11-28 13:14:57]   Found 1 orderer(s)
+[2025-11-28 13:14:57]     Checking orderer: orderer.orderer.example.com
+[2025-11-28 13:14:57]       TLS cert: ✅ Present
+[2025-11-28 13:14:57] === MSP Verification Complete ===
+[2025-11-28 13:14:57] ✅ MSP verification complete
+[2025-11-28 13:14:57] 
+[2025-11-28 13:14:57] Step 2/4: Generating channel artifacts...
+[2025-11-28 13:14:57] === Starting Channel Artifact Generation ===
+[2025-11-28 13:14:57] ERROR: configtxgen not found in PATH
+[2025-11-28 13:14:57] Please ensure Fabric binaries are installed and in PATH
+[2025-11-28 13:15:30] ==========================================
+[2025-11-28 13:15:30] Week 3-4 Channel Setup - Master Script
+[2025-11-28 13:15:30] ==========================================
+[2025-11-28 13:15:30] 
+[2025-11-28 13:15:30] Step 1/4: Verifying MSP material...
+[2025-11-28 13:15:30] === Starting MSP Verification ===
+[2025-11-28 13:15:30] Verifying MSP for BankA (BankAMSP)
+[2025-11-28 13:15:30]   Checking admincerts...
+[2025-11-28 13:15:30]     WARNING: No admin certificates found
+[2025-11-28 13:15:30]   Checking cacerts...
+[2025-11-28 13:15:30]     Found 1 CA certificate(s)
+[2025-11-28 13:15:30]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=BankA, CN=ca-banka
+[2025-11-28 13:15:30]   Checking tlscacerts...
+[2025-11-28 13:15:30]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:15:30]   Checking OU separation...
+[2025-11-28 13:15:30]     Found config.yaml
+[2025-11-28 13:15:30]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:15:30]   Checking peer certificates...
+[2025-11-28 13:15:30]     Found 2 peer(s)
+[2025-11-28 13:15:30]       Checking peer: peer0.banka.example.com
+[2025-11-28 13:15:30]         TLS cert: ✅ Present
+[2025-11-28 13:15:30]         MSP: ✅ Present
+[2025-11-28 13:15:30]       Checking peer: peer1.banka.example.com
+[2025-11-28 13:15:30]         TLS cert: ✅ Present
+[2025-11-28 13:15:30]         MSP: ✅ Present
+[2025-11-28 13:15:30]   Checking anchor peer configuration...
+[2025-11-28 13:15:30]     Anchor peer configured: Host::7051
+[2025-11-28 13:15:30]   ✅ Verification complete for BankA
+[2025-11-28 13:15:30] Verifying MSP for BankB (BankBMSP)
+[2025-11-28 13:15:30]   Checking admincerts...
+[2025-11-28 13:15:30]     WARNING: No admin certificates found
+[2025-11-28 13:15:30]   Checking cacerts...
+[2025-11-28 13:15:30]     Found 1 CA certificate(s)
+[2025-11-28 13:15:30]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=BankB, CN=ca-bankb
+[2025-11-28 13:15:30]   Checking tlscacerts...
+[2025-11-28 13:15:30]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:15:30]   Checking OU separation...
+[2025-11-28 13:15:30]     Found config.yaml
+[2025-11-28 13:15:30]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:15:30]   Checking peer certificates...
+[2025-11-28 13:15:30]     Found 2 peer(s)
+[2025-11-28 13:15:30]       Checking peer: peer0.bankb.example.com
+[2025-11-28 13:15:30]         TLS cert: ✅ Present
+[2025-11-28 13:15:30]         MSP: ✅ Present
+[2025-11-28 13:15:30]       Checking peer: peer1.bankb.example.com
+[2025-11-28 13:15:30]         TLS cert: ✅ Present
+[2025-11-28 13:15:30]         MSP: ✅ Present
+[2025-11-28 13:15:30]   Checking anchor peer configuration...
+[2025-11-28 13:15:30]     Anchor peer configured: Host::9051
+[2025-11-28 13:15:30]   ✅ Verification complete for BankB
+[2025-11-28 13:15:30] Verifying MSP for ConsortiumOps (ConsortiumOpsMSP)
+[2025-11-28 13:15:30]   Checking admincerts...
+[2025-11-28 13:15:30]     WARNING: No admin certificates found
+[2025-11-28 13:15:30]   Checking cacerts...
+[2025-11-28 13:15:30]     Found 1 CA certificate(s)
+[2025-11-28 13:15:30]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=ConsortiumOps, CN=ca-consortiumops
+[2025-11-28 13:15:30]   Checking tlscacerts...
+[2025-11-28 13:15:30]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:15:30]   Checking OU separation...
+[2025-11-28 13:15:30]     Found config.yaml
+[2025-11-28 13:15:30]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:15:30]   Checking peer certificates...
+[2025-11-28 13:15:30]     Found 1 peer(s)
+[2025-11-28 13:15:30]       Checking peer: peer0.consortiumops.example.com
+[2025-11-28 13:15:30]         TLS cert: ✅ Present
+[2025-11-28 13:15:30]         MSP: ✅ Present
+[2025-11-28 13:15:30]   Checking anchor peer configuration...
+[2025-11-28 13:15:30]     Anchor peer configured: Host::11051
+[2025-11-28 13:15:30]   ✅ Verification complete for ConsortiumOps
+[2025-11-28 13:15:30] Verifying MSP for RegulatorObserver (RegulatorObserverMSP)
+[2025-11-28 13:15:30]   Checking admincerts...
+[2025-11-28 13:15:30]     WARNING: No admin certificates found
+[2025-11-28 13:15:30]   Checking cacerts...
+[2025-11-28 13:15:30]     Found 1 CA certificate(s)
+[2025-11-28 13:15:30]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=RegulatorObserver, CN=ca-regulatorobserver
+[2025-11-28 13:15:30]   Checking tlscacerts...
+[2025-11-28 13:15:30]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:15:30]   Checking OU separation...
+[2025-11-28 13:15:30]     Found config.yaml
+[2025-11-28 13:15:30]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:15:30]   Checking peer certificates...
+[2025-11-28 13:15:30]     Found 1 peer(s)
+[2025-11-28 13:15:30]       Checking peer: peer0.regulatorobserver.example.com
+[2025-11-28 13:15:30]         TLS cert: ✅ Present
+[2025-11-28 13:15:30]         MSP: ✅ Present
+[2025-11-28 13:15:30]   Checking anchor peer configuration...
+[2025-11-28 13:15:30]     Anchor peer configured: Host::12051
+[2025-11-28 13:15:30]   ✅ Verification complete for RegulatorObserver
+[2025-11-28 13:15:30] Verifying Orderer MSP
+[2025-11-28 13:15:30]   Orderer MSP directory found
+[2025-11-28 13:15:30]   Found 1 orderer(s)
+[2025-11-28 13:15:30]     Checking orderer: orderer.orderer.example.com
+[2025-11-28 13:15:30]       TLS cert: ✅ Present
+[2025-11-28 13:15:30] === MSP Verification Complete ===
+[2025-11-28 13:15:30] ✅ MSP verification complete
+[2025-11-28 13:15:30] 
+[2025-11-28 13:15:30] Step 2/4: Generating channel artifacts...
+[2025-11-28 13:15:30] === Starting Channel Artifact Generation ===
+[2025-11-28 13:15:30] Using configtxgen: /Users/rhys/fabric-dev/fabric-dev-network/fabric-samples/bin/configtxgen
+[2025-11-28 13:15:30] FABRIC_CFG_PATH: /Users/rhys/fabric-dev/fabric-dev-network/configtx
+[2025-11-28 13:15:30] 
+[2025-11-28 13:15:30] === Generating Channel Creation Transactions ===
+[2025-11-28 13:15:30] 
+[2025-11-28 13:15:30] === Generating model-governance Channel Transaction ===
+[2025-11-28 13:15:30] Generating channel creation transaction for: model-governance
+[2025-11-28 13:15:30]   Profile: ModelGovernanceChannel
+[34m2025-11-28 13:15:30.853 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[34m2025-11-28 13:15:30.862 CET 0002 INFO[0m [common.tools.configtxgen.localconfig] [34;1mcompleteInitialization[0m -> orderer type: etcdraft
+[34m2025-11-28 13:15:30.862 CET 0003 INFO[0m [common.tools.configtxgen.localconfig] [34;1mcompleteInitialization[0m -> Orderer.EtcdRaft.Options unset, setting to tick_interval:"500ms" election_tick:10 heartbeat_tick:1 max_inflight_blocks:5 snapshot_interval_size:16777216 
+[34m2025-11-28 13:15:30.862 CET 0004 INFO[0m [common.tools.configtxgen.localconfig] [34;1mLoad[0m -> Loaded configuration: /Users/rhys/fabric-dev/fabric-dev-network/configtx/configtx.yaml
+[34m2025-11-28 13:15:30.862 CET 0005 INFO[0m [common.tools.configtxgen] [34;1mdoOutputChannelCreateTx[0m -> Generating new channel configtx
+[34m2025-11-28 13:15:30.870 CET 0006 INFO[0m [common.tools.configtxgen] [34;1mdoOutputChannelCreateTx[0m -> Writing new channel tx
+[2025-11-28 13:15:30]   ✅ Transaction generated: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/model-governance.tx
+[2025-11-28 13:15:30]   Size: 506 bytes
+[2025-11-28 13:15:30]   SHA256: b2b04c5c2c2a881bbb2d6a65ca4d63c5a6a6a60bcdb485a4b1669535cf0525ed
+[2025-11-28 13:15:30]   Metadata saved: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/model-governance.metadata.json
+[2025-11-28 13:15:30] 
+[2025-11-28 13:15:30] === Generating sar-audit Channel Transaction ===
+[2025-11-28 13:15:30] Generating channel creation transaction for: sar-audit
+[2025-11-28 13:15:30]   Profile: SARAuditChannel
+[34m2025-11-28 13:15:30.946 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[34m2025-11-28 13:15:30.954 CET 0002 INFO[0m [common.tools.configtxgen.localconfig] [34;1mcompleteInitialization[0m -> orderer type: etcdraft
+[34m2025-11-28 13:15:30.954 CET 0003 INFO[0m [common.tools.configtxgen.localconfig] [34;1mcompleteInitialization[0m -> Orderer.EtcdRaft.Options unset, setting to tick_interval:"500ms" election_tick:10 heartbeat_tick:1 max_inflight_blocks:5 snapshot_interval_size:16777216 
+[34m2025-11-28 13:15:30.954 CET 0004 INFO[0m [common.tools.configtxgen.localconfig] [34;1mLoad[0m -> Loaded configuration: /Users/rhys/fabric-dev/fabric-dev-network/configtx/configtx.yaml
+[34m2025-11-28 13:15:30.954 CET 0005 INFO[0m [common.tools.configtxgen] [34;1mdoOutputChannelCreateTx[0m -> Generating new channel configtx
+[34m2025-11-28 13:15:30.957 CET 0006 INFO[0m [common.tools.configtxgen] [34;1mdoOutputChannelCreateTx[0m -> Writing new channel tx
+[2025-11-28 13:15:30]   ✅ Transaction generated: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/sar-audit.tx
+[2025-11-28 13:15:30]   Size: 500 bytes
+[2025-11-28 13:15:30]   SHA256: 91429e888013af59d331612e5d62f60c05d4eb4593ddeb1687b2f2f175270ead
+[2025-11-28 13:15:30]   Metadata saved: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/sar-audit.metadata.json
+[2025-11-28 13:15:30] 
+[2025-11-28 13:15:30] === Generating ops-monitoring Channel Transaction ===
+[2025-11-28 13:15:30] Generating channel creation transaction for: ops-monitoring
+[2025-11-28 13:15:30]   Profile: OpsMonitoringChannel
+[34m2025-11-28 13:15:31.005 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[34m2025-11-28 13:15:31.013 CET 0002 INFO[0m [common.tools.configtxgen.localconfig] [34;1mcompleteInitialization[0m -> orderer type: etcdraft
+[34m2025-11-28 13:15:31.013 CET 0003 INFO[0m [common.tools.configtxgen.localconfig] [34;1mcompleteInitialization[0m -> Orderer.EtcdRaft.Options unset, setting to tick_interval:"500ms" election_tick:10 heartbeat_tick:1 max_inflight_blocks:5 snapshot_interval_size:16777216 
+[34m2025-11-28 13:15:31.013 CET 0004 INFO[0m [common.tools.configtxgen.localconfig] [34;1mLoad[0m -> Loaded configuration: /Users/rhys/fabric-dev/fabric-dev-network/configtx/configtx.yaml
+[34m2025-11-28 13:15:31.013 CET 0005 INFO[0m [common.tools.configtxgen] [34;1mdoOutputChannelCreateTx[0m -> Generating new channel configtx
+[34m2025-11-28 13:15:31.014 CET 0006 INFO[0m [common.tools.configtxgen] [34;1mdoOutputChannelCreateTx[0m -> Writing new channel tx
+[2025-11-28 13:15:31]   ✅ Transaction generated: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/ops-monitoring.tx
+[2025-11-28 13:15:31]   Size: 446 bytes
+[2025-11-28 13:15:31]   SHA256: 5eac094b22b07b89cd05a51e2d1cdcfc0b7975f12b04c4b106aaf0dd1638e1b9
+[2025-11-28 13:15:31]   Metadata saved: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/ops-monitoring.metadata.json
+[2025-11-28 13:15:31] 
+[2025-11-28 13:15:31] === Channel Artifact Generation Complete ===
+[2025-11-28 13:15:31] All artifacts saved to: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4
+[2025-11-28 13:15:31] 
+[2025-11-28 13:15:31] Generated files:
+total 48
+-rw-r--r--  1 rhys  staff   534B Nov 28 13:15 model-governance.metadata.json
+-rw-r-----  1 rhys  staff   506B Nov 28 13:15 model-governance.tx
+-rw-r--r--  1 rhys  staff   528B Nov 28 13:15 ops-monitoring.metadata.json
+-rw-r-----  1 rhys  staff   446B Nov 28 13:15 ops-monitoring.tx
+-rw-r--r--  1 rhys  staff   513B Nov 28 13:15 sar-audit.metadata.json
+-rw-r-----  1 rhys  staff   500B Nov 28 13:15 sar-audit.tx
+[2025-11-28 13:15:31] ✅ Channel artifacts generated
+[2025-11-28 13:15:31] 
+[2025-11-28 13:15:31] Step 3/4: Creating channels and joining peers...
+[2025-11-28 13:15:31] NOTE: This step requires the network to be running
+[2025-11-28 13:15:31] Network status checked - proceeding with channel creation...
+[2025-11-28 13:15:31] === Starting Channel Creation and Peer Join Process ===
+[2025-11-28 13:15:31] 
+[2025-11-28 13:15:31] === Generating Channel Transactions ===
+[2025-11-28 13:15:31] Generating channel creation transaction for: model-governance
+/Users/rhys/fabric-dev/fabric-dev-network/scripts/week3-4_channel_setup/create_and_join_channels.sh: line 99: configtxgen: command not found
+[2025-11-28 13:15:31]   ✅ Channel transaction generated: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/model-governance.tx
+[2025-11-28 13:15:31] Generating channel creation transaction for: sar-audit
+/Users/rhys/fabric-dev/fabric-dev-network/scripts/week3-4_channel_setup/create_and_join_channels.sh: line 99: configtxgen: command not found
+[2025-11-28 13:15:31]   ✅ Channel transaction generated: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/sar-audit.tx
+[2025-11-28 13:15:31] Generating channel creation transaction for: ops-monitoring
+/Users/rhys/fabric-dev/fabric-dev-network/scripts/week3-4_channel_setup/create_and_join_channels.sh: line 99: configtxgen: command not found
+[2025-11-28 13:15:31]   ✅ Channel transaction generated: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/ops-monitoring.tx
+[2025-11-28 13:15:31] 
+[2025-11-28 13:15:31] === Creating Channels ===
+[2025-11-28 13:15:31] === Creating channel: model-governance ===
+[2025-11-28 13:15:31]   Creator org: 3
+[2025-11-28 13:15:31]   Block file: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/model-governance.block
+[2025-11-28 13:15:31] ERROR: Channel genesis block not found: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/model-governance.block
+[2025-11-28 13:15:31] Please run generate_channels.sh first
+[2025-11-28 13:16:10] ==========================================
+[2025-11-28 13:16:10] Week 3-4 Channel Setup - Master Script
+[2025-11-28 13:16:10] ==========================================
+[2025-11-28 13:16:10] 
+[2025-11-28 13:16:10] Step 1/4: Verifying MSP material...
+[2025-11-28 13:16:10] === Starting MSP Verification ===
+[2025-11-28 13:16:10] Verifying MSP for BankA (BankAMSP)
+[2025-11-28 13:16:10]   Checking admincerts...
+[2025-11-28 13:16:10]     WARNING: No admin certificates found
+[2025-11-28 13:16:10]   Checking cacerts...
+[2025-11-28 13:16:10]     Found 1 CA certificate(s)
+[2025-11-28 13:16:10]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=BankA, CN=ca-banka
+[2025-11-28 13:16:10]   Checking tlscacerts...
+[2025-11-28 13:16:10]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:16:10]   Checking OU separation...
+[2025-11-28 13:16:10]     Found config.yaml
+[2025-11-28 13:16:10]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:16:10]   Checking peer certificates...
+[2025-11-28 13:16:10]     Found 2 peer(s)
+[2025-11-28 13:16:10]       Checking peer: peer0.banka.example.com
+[2025-11-28 13:16:10]         TLS cert: ✅ Present
+[2025-11-28 13:16:10]         MSP: ✅ Present
+[2025-11-28 13:16:10]       Checking peer: peer1.banka.example.com
+[2025-11-28 13:16:10]         TLS cert: ✅ Present
+[2025-11-28 13:16:10]         MSP: ✅ Present
+[2025-11-28 13:16:10]   Checking anchor peer configuration...
+[2025-11-28 13:16:10]     Anchor peer configured: Host::7051
+[2025-11-28 13:16:10]   ✅ Verification complete for BankA
+[2025-11-28 13:16:10] Verifying MSP for BankB (BankBMSP)
+[2025-11-28 13:16:10]   Checking admincerts...
+[2025-11-28 13:16:10]     WARNING: No admin certificates found
+[2025-11-28 13:16:10]   Checking cacerts...
+[2025-11-28 13:16:10]     Found 1 CA certificate(s)
+[2025-11-28 13:16:10]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=BankB, CN=ca-bankb
+[2025-11-28 13:16:10]   Checking tlscacerts...
+[2025-11-28 13:16:10]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:16:10]   Checking OU separation...
+[2025-11-28 13:16:10]     Found config.yaml
+[2025-11-28 13:16:10]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:16:10]   Checking peer certificates...
+[2025-11-28 13:16:10]     Found 2 peer(s)
+[2025-11-28 13:16:10]       Checking peer: peer0.bankb.example.com
+[2025-11-28 13:16:10]         TLS cert: ✅ Present
+[2025-11-28 13:16:10]         MSP: ✅ Present
+[2025-11-28 13:16:10]       Checking peer: peer1.bankb.example.com
+[2025-11-28 13:16:10]         TLS cert: ✅ Present
+[2025-11-28 13:16:10]         MSP: ✅ Present
+[2025-11-28 13:16:10]   Checking anchor peer configuration...
+[2025-11-28 13:16:10]     Anchor peer configured: Host::9051
+[2025-11-28 13:16:10]   ✅ Verification complete for BankB
+[2025-11-28 13:16:10] Verifying MSP for ConsortiumOps (ConsortiumOpsMSP)
+[2025-11-28 13:16:10]   Checking admincerts...
+[2025-11-28 13:16:10]     WARNING: No admin certificates found
+[2025-11-28 13:16:10]   Checking cacerts...
+[2025-11-28 13:16:10]     Found 1 CA certificate(s)
+[2025-11-28 13:16:10]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=ConsortiumOps, CN=ca-consortiumops
+[2025-11-28 13:16:10]   Checking tlscacerts...
+[2025-11-28 13:16:10]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:16:10]   Checking OU separation...
+[2025-11-28 13:16:10]     Found config.yaml
+[2025-11-28 13:16:10]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:16:10]   Checking peer certificates...
+[2025-11-28 13:16:10]     Found 1 peer(s)
+[2025-11-28 13:16:10]       Checking peer: peer0.consortiumops.example.com
+[2025-11-28 13:16:10]         TLS cert: ✅ Present
+[2025-11-28 13:16:10]         MSP: ✅ Present
+[2025-11-28 13:16:10]   Checking anchor peer configuration...
+[2025-11-28 13:16:10]     Anchor peer configured: Host::11051
+[2025-11-28 13:16:10]   ✅ Verification complete for ConsortiumOps
+[2025-11-28 13:16:10] Verifying MSP for RegulatorObserver (RegulatorObserverMSP)
+[2025-11-28 13:16:10]   Checking admincerts...
+[2025-11-28 13:16:10]     WARNING: No admin certificates found
+[2025-11-28 13:16:10]   Checking cacerts...
+[2025-11-28 13:16:10]     Found 1 CA certificate(s)
+[2025-11-28 13:16:10]       CA cert: C=GB, ST=London, L=London, O=AML AI Network, OU=RegulatorObserver, CN=ca-regulatorobserver
+[2025-11-28 13:16:10]   Checking tlscacerts...
+[2025-11-28 13:16:10]     Found 0 TLS CA certificate(s)
+[2025-11-28 13:16:10]   Checking OU separation...
+[2025-11-28 13:16:10]     Found config.yaml
+[2025-11-28 13:16:10]     WARNING: No OU definitions found in config.yaml
+[2025-11-28 13:16:10]   Checking peer certificates...
+[2025-11-28 13:16:10]     Found 1 peer(s)
+[2025-11-28 13:16:10]       Checking peer: peer0.regulatorobserver.example.com
+[2025-11-28 13:16:10]         TLS cert: ✅ Present
+[2025-11-28 13:16:10]         MSP: ✅ Present
+[2025-11-28 13:16:10]   Checking anchor peer configuration...
+[2025-11-28 13:16:10]     Anchor peer configured: Host::12051
+[2025-11-28 13:16:10]   ✅ Verification complete for RegulatorObserver
+[2025-11-28 13:16:10] Verifying Orderer MSP
+[2025-11-28 13:16:10]   Orderer MSP directory found
+[2025-11-28 13:16:10]   Found 1 orderer(s)
+[2025-11-28 13:16:10]     Checking orderer: orderer.orderer.example.com
+[2025-11-28 13:16:10]       TLS cert: ✅ Present
+[2025-11-28 13:16:10] === MSP Verification Complete ===
+[2025-11-28 13:16:10] ✅ MSP verification complete
+[2025-11-28 13:16:10] 
+[2025-11-28 13:16:10] Step 2/4: Generating channel artifacts...
+[2025-11-28 13:16:10] === Starting Channel Artifact Generation ===
+[2025-11-28 13:16:10] Using configtxgen: /Users/rhys/fabric-dev/fabric-dev-network/fabric-samples/bin/configtxgen
+[2025-11-28 13:16:10] FABRIC_CFG_PATH: /Users/rhys/fabric-dev/fabric-dev-network/configtx
+[2025-11-28 13:16:10] 
+[2025-11-28 13:16:10] === Generating Channel Creation Transactions ===
+[2025-11-28 13:16:10] 
+[2025-11-28 13:16:10] === Generating model-governance Channel Transaction ===
+[2025-11-28 13:16:10] Generating channel creation transaction for: model-governance
+[2025-11-28 13:16:10]   Profile: ModelGovernanceChannel
+[34m2025-11-28 13:16:10.854 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[34m2025-11-28 13:16:10.862 CET 0002 INFO[0m [common.tools.configtxgen.localconfig] [34;1mcompleteInitialization[0m -> orderer type: etcdraft
+[34m2025-11-28 13:16:10.862 CET 0003 INFO[0m [common.tools.configtxgen.localconfig] [34;1mcompleteInitialization[0m -> Orderer.EtcdRaft.Options unset, setting to tick_interval:"500ms" election_tick:10 heartbeat_tick:1 max_inflight_blocks:5 snapshot_interval_size:16777216 
+[34m2025-11-28 13:16:10.862 CET 0004 INFO[0m [common.tools.configtxgen.localconfig] [34;1mLoad[0m -> Loaded configuration: /Users/rhys/fabric-dev/fabric-dev-network/configtx/configtx.yaml
+[34m2025-11-28 13:16:10.862 CET 0005 INFO[0m [common.tools.configtxgen] [34;1mdoOutputChannelCreateTx[0m -> Generating new channel configtx
+[34m2025-11-28 13:16:10.864 CET 0006 INFO[0m [common.tools.configtxgen] [34;1mdoOutputChannelCreateTx[0m -> Writing new channel tx
+[2025-11-28 13:16:10]   ✅ Transaction generated: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/model-governance.tx
+[2025-11-28 13:16:10]   Size: 506 bytes
+[2025-11-28 13:16:10]   SHA256: 98366d994afe5c2c29e07505c8fedd38c01bdf75154896aab47080d0ea8bfd5a
+[2025-11-28 13:16:10]   Metadata saved: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/model-governance.metadata.json
+[2025-11-28 13:16:10] 
+[2025-11-28 13:16:10] === Generating sar-audit Channel Transaction ===
+[2025-11-28 13:16:10] Generating channel creation transaction for: sar-audit
+[2025-11-28 13:16:10]   Profile: SARAuditChannel
+[34m2025-11-28 13:16:10.912 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[34m2025-11-28 13:16:10.920 CET 0002 INFO[0m [common.tools.configtxgen.localconfig] [34;1mcompleteInitialization[0m -> orderer type: etcdraft
+[34m2025-11-28 13:16:10.920 CET 0003 INFO[0m [common.tools.configtxgen.localconfig] [34;1mcompleteInitialization[0m -> Orderer.EtcdRaft.Options unset, setting to tick_interval:"500ms" election_tick:10 heartbeat_tick:1 max_inflight_blocks:5 snapshot_interval_size:16777216 
+[34m2025-11-28 13:16:10.920 CET 0004 INFO[0m [common.tools.configtxgen.localconfig] [34;1mLoad[0m -> Loaded configuration: /Users/rhys/fabric-dev/fabric-dev-network/configtx/configtx.yaml
+[34m2025-11-28 13:16:10.920 CET 0005 INFO[0m [common.tools.configtxgen] [34;1mdoOutputChannelCreateTx[0m -> Generating new channel configtx
+[34m2025-11-28 13:16:10.922 CET 0006 INFO[0m [common.tools.configtxgen] [34;1mdoOutputChannelCreateTx[0m -> Writing new channel tx
+[2025-11-28 13:16:10]   ✅ Transaction generated: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/sar-audit.tx
+[2025-11-28 13:16:10]   Size: 500 bytes
+[2025-11-28 13:16:10]   SHA256: 7509f331c30233d11c0f026faa4e65b90ada974611ed83f4491fd47ce7e33b7e
+[2025-11-28 13:16:10]   Metadata saved: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/sar-audit.metadata.json
+[2025-11-28 13:16:10] 
+[2025-11-28 13:16:10] === Generating ops-monitoring Channel Transaction ===
+[2025-11-28 13:16:10] Generating channel creation transaction for: ops-monitoring
+[2025-11-28 13:16:10]   Profile: OpsMonitoringChannel
+[34m2025-11-28 13:16:10.970 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[34m2025-11-28 13:16:10.978 CET 0002 INFO[0m [common.tools.configtxgen.localconfig] [34;1mcompleteInitialization[0m -> orderer type: etcdraft
+[34m2025-11-28 13:16:10.978 CET 0003 INFO[0m [common.tools.configtxgen.localconfig] [34;1mcompleteInitialization[0m -> Orderer.EtcdRaft.Options unset, setting to tick_interval:"500ms" election_tick:10 heartbeat_tick:1 max_inflight_blocks:5 snapshot_interval_size:16777216 
+[34m2025-11-28 13:16:10.978 CET 0004 INFO[0m [common.tools.configtxgen.localconfig] [34;1mLoad[0m -> Loaded configuration: /Users/rhys/fabric-dev/fabric-dev-network/configtx/configtx.yaml
+[34m2025-11-28 13:16:10.978 CET 0005 INFO[0m [common.tools.configtxgen] [34;1mdoOutputChannelCreateTx[0m -> Generating new channel configtx
+[34m2025-11-28 13:16:10.979 CET 0006 INFO[0m [common.tools.configtxgen] [34;1mdoOutputChannelCreateTx[0m -> Writing new channel tx
+[2025-11-28 13:16:10]   ✅ Transaction generated: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/ops-monitoring.tx
+[2025-11-28 13:16:10]   Size: 446 bytes
+[2025-11-28 13:16:10]   SHA256: b3fbcef7b820d70a1b7f3e9e07b9a5acb6b3653686f9592e5d654e8a6a816095
+[2025-11-28 13:16:11]   Metadata saved: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/ops-monitoring.metadata.json
+[2025-11-28 13:16:11] 
+[2025-11-28 13:16:11] === Channel Artifact Generation Complete ===
+[2025-11-28 13:16:11] All artifacts saved to: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4
+[2025-11-28 13:16:11] 
+[2025-11-28 13:16:11] Generated files:
+total 48
+-rw-r--r--  1 rhys  staff   534B Nov 28 13:16 model-governance.metadata.json
+-rw-r-----  1 rhys  staff   506B Nov 28 13:16 model-governance.tx
+-rw-r--r--  1 rhys  staff   528B Nov 28 13:16 ops-monitoring.metadata.json
+-rw-r-----  1 rhys  staff   446B Nov 28 13:16 ops-monitoring.tx
+-rw-r--r--  1 rhys  staff   513B Nov 28 13:16 sar-audit.metadata.json
+-rw-r-----  1 rhys  staff   500B Nov 28 13:16 sar-audit.tx
+[2025-11-28 13:16:11] ✅ Channel artifacts generated
+[2025-11-28 13:16:11] 
+[2025-11-28 13:16:11] Step 3/4: Creating channels and joining peers...
+[2025-11-28 13:16:11] NOTE: This step requires the network to be running
+[2025-11-28 13:16:11] Network status checked - proceeding with channel creation...
+[2025-11-28 13:16:11] === Starting Channel Creation and Peer Join Process ===
+[2025-11-28 13:16:11] Channel transactions already exist, skipping generation
+[2025-11-28 13:16:11] 
+[2025-11-28 13:16:11] === Creating Channels ===
+[2025-11-28 13:16:11] === Creating channel: model-governance ===
+[2025-11-28 13:16:11]   Creator org: 3
+[2025-11-28 13:16:11]   Transaction file: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/model-governance.tx
+[2025-11-28 13:16:11]   Creating channel from ConsortiumOps admin...
+[31m2025-11-28 13:16:11.061 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:11]   ✅ Channel model-governance created successfully
+[2025-11-28 13:16:11] === Creating channel: sar-audit ===
+[2025-11-28 13:16:11]   Creator org: 3
+[2025-11-28 13:16:11]   Transaction file: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/sar-audit.tx
+[2025-11-28 13:16:11]   Creating channel from ConsortiumOps admin...
+[31m2025-11-28 13:16:11.094 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:11]   ✅ Channel sar-audit created successfully
+[2025-11-28 13:16:11] === Creating channel: ops-monitoring ===
+[2025-11-28 13:16:11]   Creator org: 3
+[2025-11-28 13:16:11]   Transaction file: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/ops-monitoring.tx
+[2025-11-28 13:16:11]   Creating channel from ConsortiumOps admin...
+[31m2025-11-28 13:16:11.127 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:11]   ✅ Channel ops-monitoring created successfully
+[2025-11-28 13:16:11] 
+[2025-11-28 13:16:11] === Joining Peers to model-governance Channel ===
+[2025-11-28 13:16:11]   Joining org 1 to channel model-governance...
+[31m2025-11-28 13:16:14.188 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:14]   ✅ BankA peer joined channel model-governance
+[31m2025-11-28 13:16:14.226 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:14]   Joining org 2 to channel model-governance...
+[31m2025-11-28 13:16:17.292 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:17]   ✅ BankB peer joined channel model-governance
+[31m2025-11-28 13:16:17.332 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:17]   Joining org 3 to channel model-governance...
+[31m2025-11-28 13:16:20.396 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:20]   ✅ ConsortiumOps peer joined channel model-governance
+[31m2025-11-28 13:16:20.433 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:20] 
+[2025-11-28 13:16:20] === Updating Anchor Peers for model-governance Channel ===
+[2025-11-28 13:16:20]   Updating anchor peer for org 1 on channel model-governance...
+[34m2025-11-28 13:16:20.466 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:16:20.474 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: model-governanceProfile
+[31m2025-11-28 13:16:20.474 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: model-governanceProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:16:20]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 1[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 1[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/BankAMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:16:20.509 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:20]   Updating anchor peer for org 2 on channel model-governance...
+[34m2025-11-28 13:16:20.535 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:16:20.543 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: model-governanceProfile
+[31m2025-11-28 13:16:20.544 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: model-governanceProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:16:20]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 2[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 2[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/BankBMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:16:20.582 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:20]   Updating anchor peer for org 3 on channel model-governance...
+[34m2025-11-28 13:16:20.611 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:16:20.619 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: model-governanceProfile
+[31m2025-11-28 13:16:20.619 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: model-governanceProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:16:20]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 3[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 3[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/ConsortiumOpsMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:16:20.653 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:20] 
+[2025-11-28 13:16:20] === Joining Peers to sar-audit Channel ===
+[2025-11-28 13:16:20]   Joining org 1 to channel sar-audit...
+[31m2025-11-28 13:16:23.702 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:23]   ✅ BankA peer joined channel sar-audit
+[31m2025-11-28 13:16:23.740 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:23]   Joining org 2 to channel sar-audit...
+[31m2025-11-28 13:16:26.781 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:26]   ✅ BankB peer joined channel sar-audit
+[31m2025-11-28 13:16:26.816 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:26]   Joining org 4 to channel sar-audit...
+[31m2025-11-28 13:16:29.878 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:29]   ✅ RegulatorObserver peer joined channel sar-audit
+[31m2025-11-28 13:16:29.915 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:29] 
+[2025-11-28 13:16:29] === Updating Anchor Peers for sar-audit Channel ===
+[2025-11-28 13:16:29]   Updating anchor peer for org 1 on channel sar-audit...
+[34m2025-11-28 13:16:29.949 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:16:29.957 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: sar-auditProfile
+[31m2025-11-28 13:16:29.957 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: sar-auditProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:16:29]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 1[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 1[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/BankAMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:16:29.992 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:29]   Updating anchor peer for org 2 on channel sar-audit...
+[34m2025-11-28 13:16:30.018 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:16:30.027 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: sar-auditProfile
+[31m2025-11-28 13:16:30.027 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: sar-auditProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:16:30]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 2[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 2[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/BankBMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:16:30.060 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:30]   Updating anchor peer for org 4 on channel sar-audit...
+[34m2025-11-28 13:16:30.087 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:16:30.095 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: sar-auditProfile
+[31m2025-11-28 13:16:30.095 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: sar-auditProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:16:30]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 4[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 4[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/RegulatorObserverMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:16:30.128 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:30] 
+[2025-11-28 13:16:30] === Joining Peers to ops-monitoring Channel ===
+[2025-11-28 13:16:30]   Joining org 3 to channel ops-monitoring...
+[31m2025-11-28 13:16:33.169 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:33]   ✅ ConsortiumOps peer joined channel ops-monitoring
+[31m2025-11-28 13:16:33.199 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:33] 
+[2025-11-28 13:16:33] === Updating Anchor Peer for ops-monitoring Channel ===
+[2025-11-28 13:16:33]   Updating anchor peer for org 3 on channel ops-monitoring...
+[34m2025-11-28 13:16:33.225 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:16:33.233 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: ops-monitoringProfile
+[31m2025-11-28 13:16:33.233 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: ops-monitoringProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:16:33]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 3[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 3[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/ConsortiumOpsMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:16:33.262 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:16:33] 
+[2025-11-28 13:16:33] === Channel Creation and Peer Join Process Complete ===
+[2025-11-28 13:16:33] All channels created and peers joined successfully
+[2025-11-28 13:16:33] ✅ Channels created and peers joined
+[2025-11-28 13:16:33] 
+[2025-11-28 13:16:33] Step 4/4: Configuring policies...
+[2025-11-28 13:16:33] === Starting Policy Configuration ===
+[2025-11-28 13:16:33] === Documenting Endorsement Policies ===
+[2025-11-28 13:16:33] Endorsement policies documented in /Users/rhys/fabric-dev/fabric-dev-network/docs/policy_updates/week3-4/endorsement_policies.md
+[2025-11-28 13:16:33] === Creating Policy Update Documentation ===
+[2025-11-28 13:16:33] Policy documentation created: /Users/rhys/fabric-dev/fabric-dev-network/docs/policy_updates/week3-4/policy_changes.json
+[2025-11-28 13:16:33] 
+[2025-11-28 13:16:33] === Policy Configuration Complete ===
+[2025-11-28 13:16:33] Note: Actual endorsement policies are applied during chaincode definition
+[2025-11-28 13:16:33] ACL policies are configured at channel level and enforced by Fabric
+[2025-11-28 13:16:33] ✅ Policies configured
+[2025-11-28 13:16:33] 
+[2025-11-28 13:16:33] ==========================================
+[2025-11-28 13:16:33] Week 3-4 Channel Setup Complete!
+[2025-11-28 13:16:33] ==========================================
+[2025-11-28 13:16:33] 
+[2025-11-28 13:16:33] Summary:
+[2025-11-28 13:16:33]   - MSP verification: ✅
+[2025-11-28 13:16:33]   - Channel artifacts: ✅
+[2025-11-28 13:16:33]   - Channels created: ✅
+[2025-11-28 13:16:33]   - Policies configured: ✅
+[2025-11-28 13:16:33] 
+[2025-11-28 13:16:33] Next steps:
+[2025-11-28 13:16:33]   1. Review logs/week3-4_channels.log
+[2025-11-28 13:16:33]   2. Review reports/week3-4_channels.md
+[2025-11-28 13:16:33]   3. Deploy chaincode with endorsement policies
+[2025-11-28 13:16:33] 
+[2025-11-28 13:53:50] === Starting Channel Creation and Peer Join Process ===
+[2025-11-28 13:53:50] Channel transactions already exist, skipping generation
+[2025-11-28 13:53:50] 
+[2025-11-28 13:53:50] === Creating Channels ===
+[2025-11-28 13:53:50] === Creating channel: model-governance ===
+[2025-11-28 13:53:50]   Creator org: 3
+[2025-11-28 13:53:50]   Transaction file: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/model-governance.tx
+[2025-11-28 13:53:50]   Creating channel from ConsortiumOps admin...
+[31m2025-11-28 13:53:50.579 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:53:50]   ✅ Channel model-governance created successfully
+[2025-11-28 13:53:50] === Creating channel: sar-audit ===
+[2025-11-28 13:53:50]   Creator org: 3
+[2025-11-28 13:53:50]   Transaction file: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/sar-audit.tx
+[2025-11-28 13:53:50]   Creating channel from ConsortiumOps admin...
+[31m2025-11-28 13:53:50.615 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:53:50]   ✅ Channel sar-audit created successfully
+[2025-11-28 13:53:50] === Creating channel: ops-monitoring ===
+[2025-11-28 13:53:50]   Creator org: 3
+[2025-11-28 13:53:50]   Transaction file: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/ops-monitoring.tx
+[2025-11-28 13:53:50]   Creating channel from ConsortiumOps admin...
+[31m2025-11-28 13:53:50.653 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:53:50]   ✅ Channel ops-monitoring created successfully
+[2025-11-28 13:53:50] 
+[2025-11-28 13:53:50] === Joining Peers to model-governance Channel ===
+[2025-11-28 13:53:50]   Joining org 1 to channel model-governance...
+[31m2025-11-28 13:53:53.694 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:53:53]   ✅ BankA peer joined channel model-governance
+[31m2025-11-28 13:53:53.727 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:53:53]   Joining org 2 to channel model-governance...
+[31m2025-11-28 13:53:56.777 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:53:56]   ✅ BankB peer joined channel model-governance
+[31m2025-11-28 13:53:56.809 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:53:56]   Joining org 3 to channel model-governance...
+[31m2025-11-28 13:53:59.840 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:53:59]   ✅ ConsortiumOps peer joined channel model-governance
+[31m2025-11-28 13:53:59.872 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:53:59] 
+[2025-11-28 13:53:59] === Updating Anchor Peers for model-governance Channel ===
+[2025-11-28 13:53:59]   Updating anchor peer for org 1 on channel model-governance...
+[34m2025-11-28 13:53:59.933 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:53:59.943 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: model-governanceProfile
+[31m2025-11-28 13:53:59.944 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: model-governanceProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:53:59]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 1[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 1[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/BankAMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:53:59.975 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:53:59]   Updating anchor peer for org 2 on channel model-governance...
+[34m2025-11-28 13:53:59.997 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:54:00.005 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: model-governanceProfile
+[31m2025-11-28 13:54:00.005 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: model-governanceProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:54:00]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 2[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 2[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/BankBMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:54:00.033 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:00]   Updating anchor peer for org 3 on channel model-governance...
+[34m2025-11-28 13:54:00.055 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:54:00.062 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: model-governanceProfile
+[31m2025-11-28 13:54:00.062 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: model-governanceProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:54:00]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 3[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 3[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/ConsortiumOpsMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:54:00.089 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:00] 
+[2025-11-28 13:54:00] === Joining Peers to sar-audit Channel ===
+[2025-11-28 13:54:00]   Joining org 1 to channel sar-audit...
+[31m2025-11-28 13:54:03.124 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:03]   ✅ BankA peer joined channel sar-audit
+[31m2025-11-28 13:54:03.151 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:03]   Joining org 2 to channel sar-audit...
+[31m2025-11-28 13:54:06.188 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:06]   ✅ BankB peer joined channel sar-audit
+[31m2025-11-28 13:54:06.216 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:06]   Joining org 4 to channel sar-audit...
+[31m2025-11-28 13:54:09.263 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:09]   ✅ RegulatorObserver peer joined channel sar-audit
+[31m2025-11-28 13:54:09.295 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:09] 
+[2025-11-28 13:54:09] === Updating Anchor Peers for sar-audit Channel ===
+[2025-11-28 13:54:09]   Updating anchor peer for org 1 on channel sar-audit...
+[34m2025-11-28 13:54:09.323 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:54:09.331 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: sar-auditProfile
+[31m2025-11-28 13:54:09.331 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: sar-auditProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:54:09]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 1[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 1[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/BankAMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:54:09.359 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:09]   Updating anchor peer for org 2 on channel sar-audit...
+[34m2025-11-28 13:54:09.383 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:54:09.391 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: sar-auditProfile
+[31m2025-11-28 13:54:09.391 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: sar-auditProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:54:09]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 2[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 2[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/BankBMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:54:09.420 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:09]   Updating anchor peer for org 4 on channel sar-audit...
+[34m2025-11-28 13:54:09.443 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:54:09.450 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: sar-auditProfile
+[31m2025-11-28 13:54:09.450 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: sar-auditProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:54:09]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 4[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 4[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/RegulatorObserverMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:54:09.479 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:09] 
+[2025-11-28 13:54:09] === Joining Peers to ops-monitoring Channel ===
+[2025-11-28 13:54:09]   Joining org 3 to channel ops-monitoring...
+[31m2025-11-28 13:54:12.545 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:12]   ✅ ConsortiumOps peer joined channel ops-monitoring
+[31m2025-11-28 13:54:12.576 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:12] 
+[2025-11-28 13:54:12] === Updating Anchor Peer for ops-monitoring Channel ===
+[2025-11-28 13:54:12]   Updating anchor peer for org 3 on channel ops-monitoring...
+[34m2025-11-28 13:54:12.602 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 13:54:12.609 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: ops-monitoringProfile
+[31m2025-11-28 13:54:12.609 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: ops-monitoringProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 13:54:12]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 3[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 3[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/ConsortiumOpsMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 13:54:12.635 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 13:54:12] 
+[2025-11-28 13:54:12] === Channel Creation and Peer Join Process Complete ===
+[2025-11-28 13:54:12] All channels created and peers joined successfully
+[2025-11-28 14:26:54] === Starting Channel Creation and Peer Join Process ===
+[2025-11-28 14:26:54] Channel transactions already exist, skipping generation
+[2025-11-28 14:26:54] 
+[2025-11-28 14:26:54] === Creating Channels ===
+[2025-11-28 14:26:54] === Creating channel: model-governance ===
+[2025-11-28 14:26:54]   Creator org: 3
+[2025-11-28 14:26:54]   Transaction file: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/model-governance.tx
+[2025-11-28 14:26:54]   Creating channel from ConsortiumOps admin...
+[31m2025-11-28 14:26:54.374 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:26:54]   ✅ Channel model-governance created successfully
+[2025-11-28 14:26:54] === Creating channel: sar-audit ===
+[2025-11-28 14:26:54]   Creator org: 3
+[2025-11-28 14:26:54]   Transaction file: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/sar-audit.tx
+[2025-11-28 14:26:54]   Creating channel from ConsortiumOps admin...
+[31m2025-11-28 14:26:54.408 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:26:54]   ✅ Channel sar-audit created successfully
+[2025-11-28 14:26:54] === Creating channel: ops-monitoring ===
+[2025-11-28 14:26:54]   Creator org: 3
+[2025-11-28 14:26:54]   Transaction file: /Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/ops-monitoring.tx
+[2025-11-28 14:26:54]   Creating channel from ConsortiumOps admin...
+[31m2025-11-28 14:26:54.441 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:26:54]   ✅ Channel ops-monitoring created successfully
+[2025-11-28 14:26:54] 
+[2025-11-28 14:26:54] === Joining Peers to model-governance Channel ===
+[2025-11-28 14:26:54]   Joining org 1 to channel model-governance...
+[31m2025-11-28 14:26:57.498 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:26:57]   ✅ BankA peer joined channel model-governance
+[31m2025-11-28 14:26:57.537 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:26:57]   Joining org 2 to channel model-governance...
+[31m2025-11-28 14:27:00.592 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:00]   ✅ BankB peer joined channel model-governance
+[31m2025-11-28 14:27:00.631 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:00]   Joining org 3 to channel model-governance...
+[31m2025-11-28 14:27:03.686 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:03]   ✅ ConsortiumOps peer joined channel model-governance
+[31m2025-11-28 14:27:03.722 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:03] 
+[2025-11-28 14:27:03] === Updating Anchor Peers for model-governance Channel ===
+[2025-11-28 14:27:03]   Updating anchor peer for org 1 on channel model-governance...
+[34m2025-11-28 14:27:03.790 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 14:27:03.801 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: model-governanceProfile
+[31m2025-11-28 14:27:03.801 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: model-governanceProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 14:27:03]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 1[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 1[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/BankAMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 14:27:03.836 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:03]   Updating anchor peer for org 2 on channel model-governance...
+[34m2025-11-28 14:27:03.864 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 14:27:03.873 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: model-governanceProfile
+[31m2025-11-28 14:27:03.873 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: model-governanceProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 14:27:03]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 2[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 2[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/BankBMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 14:27:03.905 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:03]   Updating anchor peer for org 3 on channel model-governance...
+[34m2025-11-28 14:27:03.930 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 14:27:03.938 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: model-governanceProfile
+[31m2025-11-28 14:27:03.938 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: model-governanceProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 14:27:03]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 3[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 3[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/ConsortiumOpsMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 14:27:03.969 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:03] 
+[2025-11-28 14:27:03] === Joining Peers to sar-audit Channel ===
+[2025-11-28 14:27:03]   Joining org 1 to channel sar-audit...
+[31m2025-11-28 14:27:07.031 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:07]   ✅ BankA peer joined channel sar-audit
+[31m2025-11-28 14:27:07.069 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:07]   Joining org 2 to channel sar-audit...
+[31m2025-11-28 14:27:10.133 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:10]   ✅ BankB peer joined channel sar-audit
+[31m2025-11-28 14:27:10.170 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:10]   Joining org 4 to channel sar-audit...
+[31m2025-11-28 14:27:13.223 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:13]   ✅ RegulatorObserver peer joined channel sar-audit
+[31m2025-11-28 14:27:13.260 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:13] 
+[2025-11-28 14:27:13] === Updating Anchor Peers for sar-audit Channel ===
+[2025-11-28 14:27:13]   Updating anchor peer for org 1 on channel sar-audit...
+[34m2025-11-28 14:27:13.294 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 14:27:13.303 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: sar-auditProfile
+[31m2025-11-28 14:27:13.303 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: sar-auditProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 14:27:13]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 1[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 1[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/BankAMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 14:27:13.337 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:13]   Updating anchor peer for org 2 on channel sar-audit...
+[34m2025-11-28 14:27:13.364 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 14:27:13.372 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: sar-auditProfile
+[31m2025-11-28 14:27:13.372 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: sar-auditProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 14:27:13]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 2[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 2[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/BankBMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 14:27:13.403 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:13]   Updating anchor peer for org 4 on channel sar-audit...
+[34m2025-11-28 14:27:13.429 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 14:27:13.437 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: sar-auditProfile
+[31m2025-11-28 14:27:13.437 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: sar-auditProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 14:27:13]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 4[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 4[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/RegulatorObserverMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 14:27:13.468 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:13] 
+[2025-11-28 14:27:13] === Joining Peers to ops-monitoring Channel ===
+[2025-11-28 14:27:13]   Joining org 3 to channel ops-monitoring...
+[31m2025-11-28 14:27:16.536 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:16]   ✅ ConsortiumOps peer joined channel ops-monitoring
+[31m2025-11-28 14:27:16.574 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:16] 
+[2025-11-28 14:27:16] === Updating Anchor Peer for ops-monitoring Channel ===
+[2025-11-28 14:27:16]   Updating anchor peer for org 3 on channel ops-monitoring...
+[34m2025-11-28 14:27:16.606 CET 0001 INFO[0m [common.tools.configtxgen] [34;1mmain[0m -> Loading configuration
+[35m2025-11-28 14:27:16.614 CET 0002 PANI[0m [common.tools.configtxgen.localconfig] [35;1mLoad[0m -> Could not find profile: ops-monitoringProfile
+[31m2025-11-28 14:27:16.614 CET 0003 ERRO[0m [common.tools.configtxgen] [31;1mfunc1[0m -> Could not find profile: ops-monitoringProfile. Please make sure that FABRIC_CFG_PATH or -configPath is set to a path which contains configtx.yaml with the specified profile
+[2025-11-28 14:27:16]   Using setAnchorPeer script for anchor peer update...
+[0;34mUsing organization 3[0m
+[0;34mFetching channel config for channel [0m
+[0;34mUsing organization 3[0m
+[0;34mFetching the most recent configuration block for the channel[0m
+++ peer channel fetch config /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/config_block.pb -o localhost:7050 --ordererTLSHostnameOverride orderer.orderer.example.com -c /Users/rhys/fabric-dev/fabric-dev-network/channel-artifacts/ConsortiumOpsMSPconfig.json --tls --cafile /Users/rhys/fabric-dev/fabric-dev-network/organizations/ordererOrganizations/orderer.example.com/tlsca/tlsca.orderer.example.com-cert.pem
+[31m2025-11-28 14:27:16.648 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Fatal error when initializing core config : error when reading core config file: Config File "core" Not Found in "[/Users/rhys/fabric-dev/fabric-dev-network/configtx]"
+[2025-11-28 14:27:16] 
+[2025-11-28 14:27:16] === Channel Creation and Peer Join Process Complete ===
+[2025-11-28 14:27:16] All channels created and peers joined successfully

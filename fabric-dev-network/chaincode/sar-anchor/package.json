@@ -1,0 +1,46 @@
+{
+  "name": "sar-anchor",
+  "version": "1.0.0",
+  "description": "SAR Anchor chaincode for AML AI Network - stores encrypted references/hashes to SAR payloads, tracks submission timestamps, regulator acknowledgement",
+  "author": "Week 3-4 Implementation",
+  "date": "2025-11-28",
+  "purpose": "Chaincode scaffolding for SARAnchor module (phase_1_plan_details.md:27-34, 55-64)",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "fabric-chaincode-node start",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "lint": "eslint src test --ext .js",
+    "lint:fix": "eslint src test --ext .js --fix",
+    "format": "prettier --write \"src/**/*.js\" \"test/**/*.js\"",
+    "prepare": "node -e \"if(require('fs').existsSync('.git')) require('husky').install()\" || true"
+  },
+  "keywords": [
+    "hyperledger",
+    "fabric",
+    "chaincode",
+    "sar-anchor",
+    "private-data",
+    "aml"
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {
+    "fabric-contract-api": "^2.5.0",
+    "fabric-shim": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "husky": "^8.0.3",
+    "jest": "^29.7.0",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
+

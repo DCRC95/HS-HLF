@@ -1,0 +1,119 @@
+{
+  "author": "Week 3-4 Implementation",
+  "date": "2025-11-28",
+  "purpose": "Private data collections for SARAnchor chaincode on sar-audit channel",
+  "collections": [
+    {
+      "name": "sarHashes",
+      "policy": {
+        "identities": [
+          {
+            "role": {
+              "name": "member",
+              "mspId": "BankAMSP"
+            }
+          },
+          {
+            "role": {
+              "name": "member",
+              "mspId": "BankBMSP"
+            }
+          }
+        ],
+        "policy": {
+          "1-of": [
+            {
+              "signed-by": 0
+            },
+            {
+              "signed-by": 1
+            }
+          ]
+        }
+      },
+      "requiredPeerCount": 1,
+      "maxPeerCount": 2,
+      "blockToLive": 0,
+      "memberOnlyRead": true,
+      "memberOnlyWrite": true
+    },
+    {
+      "name": "sarMetadata",
+      "policy": {
+        "identities": [
+          {
+            "role": {
+              "name": "member",
+              "mspId": "BankAMSP"
+            }
+          },
+          {
+            "role": {
+              "name": "member",
+              "mspId": "BankBMSP"
+            }
+          },
+          {
+            "role": {
+              "name": "member",
+              "mspId": "RegulatorObserverMSP"
+            }
+          }
+        ],
+        "policy": {
+          "1-of": [
+            {
+              "signed-by": 0
+            },
+            {
+              "signed-by": 1
+            },
+            {
+              "signed-by": 2
+            }
+          ]
+        }
+      },
+      "requiredPeerCount": 1,
+      "maxPeerCount": 3,
+      "blockToLive": 0,
+      "memberOnlyRead": true,
+      "memberOnlyWrite": false
+    },
+    {
+      "name": "sensitiveAlerts",
+      "policy": {
+        "identities": [
+          {
+            "role": {
+              "name": "member",
+              "mspId": "BankAMSP"
+            }
+          },
+          {
+            "role": {
+              "name": "member",
+              "mspId": "BankBMSP"
+            }
+          }
+        ],
+        "policy": {
+          "1-of": [
+            {
+              "signed-by": 0
+            },
+            {
+              "signed-by": 1
+            }
+          ]
+        }
+      },
+      "requiredPeerCount": 1,
+      "maxPeerCount": 2,
+      "blockToLive": 365,
+      "memberOnlyRead": true,
+      "memberOnlyWrite": true
+    }
+  ]
+}
+

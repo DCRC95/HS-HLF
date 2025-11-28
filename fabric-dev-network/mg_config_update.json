@@ -1,0 +1,60 @@
+{
+	"channel_id": "model-governance",
+	"isolated_data": {},
+	"read_set": {
+		"groups": {
+			"Orderer": {
+				"groups": {},
+				"mod_policy": "",
+				"policies": {},
+				"values": {},
+				"version": "0"
+			}
+		},
+		"mod_policy": "",
+		"policies": {},
+		"values": {},
+		"version": "0"
+	},
+	"write_set": {
+		"groups": {
+			"Orderer": {
+				"groups": {},
+				"mod_policy": "",
+				"policies": {},
+				"values": {
+					"ConsensusType": {
+						"mod_policy": "Admins",
+						"value": {
+							"metadata": {
+								"consenters": [
+									{
+										"client_tls_cert": "MIIC/DCCAqKgAwIBAgIUBDMUfEvjHxamZ4xHnaQazmKv3v4wCgYIKoZIzj0EAwIwcjELMAkGA1UEBhMCR0IxDzANBgNVBAgTBkxvbmRvbjEPMA0GA1UEBxMGTG9uZG9uMRcwFQYDVQQKEw5BTUwgQUkgTmV0d29yazETMBEGA1UECxMKT3JkZXJlck9yZzETMBEGA1UEAxMKY2Etb3JkZXJlcjAeFw0yNTExMjAxNTIzMDBaFw0yNTEyMjAxNTIzMDBaMGAxCzAJBgNVBAYTAlVTMRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEUMBIGA1UEChMLSHlwZXJsZWRnZXIxEDAOBgNVBAsTB29yZGVyZXIxEDAOBgNVBAMTB29yZGVyZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAARO50kcU2IYw42G+O4+K+AhiV6uQBju/TXODw494IOQ1NX5lYzLMDVjWalttEkKmZ1W8XKmFfeWYjsxNbiu12imo4IBJjCCASIwDgYDVR0PAQH/BAQDAgOoMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBTzcempSrX5QnQG9hEyHh5PZDt38jAfBgNVHSMEGDAWgBRL4bP1+mULNpYQSQXyohxe8rxcRDBGBgNVHREEPzA9ghtvcmRlcmVyLm9yZGVyZXIuZXhhbXBsZS5jb22CE29yZGVyZXIuZXhhbXBsZS5jb22CCWxvY2FsaG9zdDBbBggqAwQFBgcIAQRPeyJhdHRycyI6eyJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVucm9sbG1lbnRJRCI6Im9yZGVyZXIiLCJoZi5UeXBlIjoib3JkZXJlciJ9fTAKBggqhkjOPQQDAgNIADBFAiEA5dfe3MW9/uQ4hFDJiSv1dwJpK8qMPT5fB/7VR6TSdlQCIFJu+0lNmOktmShHHi9jvZjCvHceE3D3HXVy5SN46pMV",
+										"host": "orderer.example.com",
+										"port": 7050,
+										"server_tls_cert": "MIIC/DCCAqKgAwIBAgIUBDMUfEvjHxamZ4xHnaQazmKv3v4wCgYIKoZIzj0EAwIwcjELMAkGA1UEBhMCR0IxDzANBgNVBAgTBkxvbmRvbjEPMA0GA1UEBxMGTG9uZG9uMRcwFQYDVQQKEw5BTUwgQUkgTmV0d29yazETMBEGA1UECxMKT3JkZXJlck9yZzETMBEGA1UEAxMKY2Etb3JkZXJlcjAeFw0yNTExMjAxNTIzMDBaFw0yNTEyMjAxNTIzMDBaMGAxCzAJBgNVBAYTAlVTMRcwFQYDVQQIEw5Ob3J0aCBDYXJvbGluYTEUMBIGA1UEChMLSHlwZXJsZWRnZXIxEDAOBgNVBAsTB29yZGVyZXIxEDAOBgNVBAMTB29yZGVyZXIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAARO50kcU2IYw42G+O4+K+AhiV6uQBju/TXODw494IOQ1NX5lYzLMDVjWalttEkKmZ1W8XKmFfeWYjsxNbiu12imo4IBJjCCASIwDgYDVR0PAQH/BAQDAgOoMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBTzcempSrX5QnQG9hEyHh5PZDt38jAfBgNVHSMEGDAWgBRL4bP1+mULNpYQSQXyohxe8rxcRDBGBgNVHREEPzA9ghtvcmRlcmVyLm9yZGVyZXIuZXhhbXBsZS5jb22CE29yZGVyZXIuZXhhbXBsZS5jb22CCWxvY2FsaG9zdDBbBggqAwQFBgcIAQRPeyJhdHRycyI6eyJoZi5BZmZpbGlhdGlvbiI6IiIsImhmLkVucm9sbG1lbnRJRCI6Im9yZGVyZXIiLCJoZi5UeXBlIjoib3JkZXJlciJ9fTAKBggqhkjOPQQDAgNIADBFAiEA5dfe3MW9/uQ4hFDJiSv1dwJpK8qMPT5fB/7VR6TSdlQCIFJu+0lNmOktmShHHi9jvZjCvHceE3D3HXVy5SN46pMV"
+									}
+								],
+								"options": {
+									"election_tick": 10,
+									"heartbeat_tick": 1,
+									"max_inflight_blocks": 5,
+									"snapshot_interval_size": 16777216,
+									"tick_interval": "500ms"
+								}
+							},
+							"state": "STATE_NORMAL",
+							"type": "etcdraft"
+						},
+						"version": "1"
+					}
+				},
+				"version": "0"
+			}
+		},
+		"mod_policy": "",
+		"policies": {},
+		"values": {},
+		"version": "0"
+	}
+}

@@ -1,0 +1,60 @@
+{
+	"channel_id": "model-governance",
+	"isolated_data": {},
+	"read_set": {
+		"groups": {
+			"Orderer": {
+				"groups": {
+					"OrdererOrg": {
+						"groups": {},
+						"mod_policy": "",
+						"policies": {},
+						"values": {},
+						"version": "0"
+					}
+				},
+				"mod_policy": "",
+				"policies": {},
+				"values": {},
+				"version": "0"
+			}
+		},
+		"mod_policy": "",
+		"policies": {},
+		"values": {},
+		"version": "0"
+	},
+	"write_set": {
+		"groups": {
+			"Orderer": {
+				"groups": {
+					"OrdererOrg": {
+						"groups": {},
+						"mod_policy": "",
+						"policies": {},
+						"values": {
+							"Endpoints": {
+								"mod_policy": "Admins",
+								"value": {
+									"addresses": [
+										"orderer.orderer.example.com:7050"
+									]
+								},
+								"version": "1"
+							}
+						},
+						"version": "0"
+					}
+				},
+				"mod_policy": "",
+				"policies": {},
+				"values": {},
+				"version": "0"
+			}
+		},
+		"mod_policy": "",
+		"policies": {},
+		"values": {},
+		"version": "0"
+	}
+}

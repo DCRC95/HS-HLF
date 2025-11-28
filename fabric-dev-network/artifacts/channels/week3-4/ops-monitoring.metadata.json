@@ -1,0 +1,11 @@
+{
+  "channel_name": "ops-monitoring",
+  "profile": "OpsMonitoringChannel",
+  "consortium": "AMLConsortium",
+  "tx_file": "/Users/rhys/fabric-dev/fabric-dev-network/artifacts/channels/week3-4/ops-monitoring.tx",
+  "tx_size_bytes": 446,
+  "tx_sha256": "b3fbcef7b820d70a1b7f3e9e07b9a5acb6b3653686f9592e5d654e8a6a816095",
+  "generated_at": "2025-11-28 12:16:11 UTC",
+  "configtx_path": "/Users/rhys/fabric-dev/fabric-dev-network/configtx",
+  "note": "Genesis block will be created when channel is created via peer channel create"
+}

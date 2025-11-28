@@ -147,7 +147,7 @@ Application: &ApplicationDefaults
 
 Orderer: &OrdererDefaults
   Addresses:
-    - orderer.example.com:7050
+    - orderer.orderer.example.com:7050
   BatchTimeout: 2s
   BatchSize:
     MaxMessageCount: 10
@@ -186,13 +186,16 @@ Channel: &ChannelDefaults
 #
 #   Profile
 #
-#   - Defines two custom profiles: one for the system channel genesis block, 
-#     and one for the application channel creation transaction.
+#   - Defines profiles for system channel genesis block and application channels
+#   - Week 3-4: Added three new channel profiles (model-governance, sar-audit, ops-monitoring)
 #
 ################################################################################
 Profiles:
 
   # 1. System Channel Genesis Block Profile
+  # Author: Week 3-4 Implementation
+  # Date: 2025-11-28
+  # Purpose: System channel genesis block with AMLConsortium definition
   FiveOrgOrdererGenesis:
     <<: *ChannelDefaults
     Orderer:
@@ -200,25 +203,27 @@ Profiles:
       OrdererType: etcdraft
       EtcdRaft:
         Consenters:
-          - Host: orderer.example.com
+          - Host: orderer.orderer.example.com
             Port: 7050
             ClientTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
             ServerTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
       Organizations:
         - *OrdererOrg
       Capabilities: *OrdererCapabilities
-    Application:
-      <<: *ApplicationDefaults
-      Organizations:
-      # All peer organizations are added to the consortium at genesis
-        - *BankA
-        - *BankB
-        - *ConsortiumOps
-        - *RegulatorObserver
+    Consortiums:
+      AMLConsortium:
+        Organizations:
+          - *BankA
+          - *BankB
+          - *ConsortiumOps
+          - *RegulatorObserver
 
   # 2. Application Channel Creation Transaction Profile
+  # Author: Week 3-4 Implementation
+  # Date: 2025-11-28
+  # Purpose: Legacy profile for all-org channel (backwards compatibility)
   FiveOrgApplicationChannel:
-    Consortium: SampleConsortium  # Placeholder name, as it's not strictly necessary for v2.x
+    Consortium: AMLConsortium
     <<: *ChannelDefaults
     Application:
       <<: *ApplicationDefaults
@@ -237,7 +242,7 @@ Profiles:
       OrdererType: etcdraft
       EtcdRaft:
         Consenters:
-          - Host: orderer.example.com
+          - Host: orderer.orderer.example.com
             Port: 7050
             ClientTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
             ServerTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
@@ -251,4 +256,83 @@ Profiles:
         - *BankB
         - *ConsortiumOps
         - *RegulatorObserver
+      Capabilities: *ApplicationCapabilities
+
+  # 4. Model Governance Channel - Banks + ConsortiumOps
+  # Author: Week 3-4 Implementation
+  # Date: 2025-11-28
+  # Purpose: Channel for model registry and contribution ledger chaincode
+  ModelGovernanceChannel:
+    Consortium: AMLConsortium
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      OrdererType: etcdraft
+      EtcdRaft:
+        Consenters:
+          - Host: orderer.orderer.example.com
+            Port: 7050
+            ClientTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
+            ServerTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
+      Organizations:
+        - *OrdererOrg
+      Capabilities: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *BankA
+        - *BankB
+        - *ConsortiumOps
+      Capabilities: *ApplicationCapabilities
+
+  # 5. SAR Audit Channel - Banks + RegulatorObserver
+  # Author: Week 3-4 Implementation
+  # Date: 2025-11-28
+  # Purpose: Channel for SAR metadata with private data collections, regulator read-only access
+  SARAuditChannel:
+    Consortium: AMLConsortium
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      OrdererType: etcdraft
+      EtcdRaft:
+        Consenters:
+          - Host: orderer.orderer.example.com
+            Port: 7050
+            ClientTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
+            ServerTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
+      Organizations:
+        - *OrdererOrg
+      Capabilities: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *BankA
+        - *BankB
+        - *RegulatorObserver
+      Capabilities: *ApplicationCapabilities
+
+  # 6. Ops Monitoring Channel - ConsortiumOps only
+  # Author: Week 3-4 Implementation
+  # Date: 2025-11-28
+  # Purpose: Channel for operations telemetry and chaincode deployment approvals
+  OpsMonitoringChannel:
+    Consortium: AMLConsortium
+    <<: *ChannelDefaults
+    Orderer:
+      <<: *OrdererDefaults
+      OrdererType: etcdraft
+      EtcdRaft:
+        Consenters:
+          - Host: orderer.orderer.example.com
+            Port: 7050
+            ClientTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
+            ServerTLSCert: ../organizations/ordererOrganizations/orderer.example.com/orderers/orderer.orderer.example.com/tls/server.crt
+      Organizations:
+        - *OrdererOrg
+      Capabilities: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+        - *ConsortiumOps
       Capabilities: *ApplicationCapabilities

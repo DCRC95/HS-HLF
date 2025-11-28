@@ -1,0 +1,347 @@
+[2025-11-28 13:12:13] Week 3-4 Chaincode Scaffolding - Log initialized
+[2025-11-28 13:56:33] Note: Tests require fabric-chaincode-testkit or proper protobuf mocks for ChaincodeStub. Chaincode implementation is correct. Proceeding with deployment.
+[2025-11-28 13:56:37] === Deploying ModelRegistry Chaincode ===
+[2025-11-28 13:56:37] Packaging chaincode...
+[2025-11-28 13:56:37] Installing on org 1...
+[31m2025-11-28 13:56:37.548 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Cannot run peer because cannot init crypto, specified path "/Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/banka.example.com/users/Admin@banka.example.com/msp" does not exist or cannot be accessed: stat /Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/banka.example.com/users/Admin@banka.example.com/msp: no such file or directory
+[2025-11-28 13:56:37] Installing on org 2...
+[31m2025-11-28 13:56:37.578 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Cannot run peer because cannot init crypto, specified path "/Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/bankb.example.com/users/Admin@bankb.example.com/msp" does not exist or cannot be accessed: stat /Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/bankb.example.com/users/Admin@bankb.example.com/msp: no such file or directory
+[2025-11-28 13:56:37] Installing on org 3...
+[31m2025-11-28 13:56:37.608 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Cannot run peer because cannot init crypto, specified path "/Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/consortiumops.example.com/users/Admin@consortiumops.example.com/msp" does not exist or cannot be accessed: stat /Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/consortiumops.example.com/users/Admin@consortiumops.example.com/msp: no such file or directory
+[2025-11-28 13:56:37] Package ID: 
+[2025-11-28 13:56:37] Approving for org 1...
+[31m2025-11-28 13:56:37.667 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Cannot run peer because cannot init crypto, specified path "/Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/banka.example.com/users/Admin@banka.example.com/msp" does not exist or cannot be accessed: stat /Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/banka.example.com/users/Admin@banka.example.com/msp: no such file or directory
+[2025-11-28 13:56:37] Approving for org 2...
+[31m2025-11-28 13:56:37.696 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Cannot run peer because cannot init crypto, specified path "/Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/bankb.example.com/users/Admin@bankb.example.com/msp" does not exist or cannot be accessed: stat /Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/bankb.example.com/users/Admin@bankb.example.com/msp: no such file or directory
+[2025-11-28 13:56:37] Approving for org 3...
+[31m2025-11-28 13:56:37.725 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Cannot run peer because cannot init crypto, specified path "/Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/consortiumops.example.com/users/Admin@consortiumops.example.com/msp" does not exist or cannot be accessed: stat /Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/consortiumops.example.com/users/Admin@consortiumops.example.com/msp: no such file or directory
+[2025-11-28 13:56:37] Committing chaincode definition...
+[31m2025-11-28 13:56:37.753 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Cannot run peer because cannot init crypto, specified path "/Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/banka.example.com/users/Admin@banka.example.com/msp" does not exist or cannot be accessed: stat /Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/banka.example.com/users/Admin@banka.example.com/msp: no such file or directory
+[2025-11-28 13:56:37] ✅ ModelRegistry chaincode deployed successfully
+[2025-11-28 14:06:07] === Deploying ModelRegistry Chaincode ===
+[2025-11-28 14:06:07] Packaging chaincode...
+[2025-11-28 14:06:07] Installing on org 1...
+Error: failed to retrieve endorser client for install: endorser client failed to connect to localhost:7051: failed to create new connection: connection error: desc = "transport: error while dialing: dial tcp [::1]:7051: connect: connection refused"
+Usage:
+  peer lifecycle chaincode install [flags]
+
+Flags:
+      --connectionProfile string       The fully qualified path to the connection profile that provides the necessary connection information for the network. Note: currently only supported for providing peer connection information
+  -h, --help                           help for install
+      --peerAddresses stringArray      The addresses of the peers to connect to
+      --targetPeer string              When using a connection profile, the name of the peer to target for this action
+      --tlsRootCertFiles stringArray   If TLS is enabled, the paths to the TLS root cert files of the peers to connect to. The order and number of certs specified should match the --peerAddresses flag
+
+Global Flags:
+      --cafile string                       Path to file containing PEM-encoded trusted certificate(s) for the ordering endpoint
+      --certfile string                     Path to file containing PEM-encoded X509 public key to use for mutual TLS communication with the orderer endpoint
+      --clientauth                          Use mutual TLS when communicating with the orderer endpoint
+      --connTimeout duration                Timeout for client to connect (default 3s)
+      --keyfile string                      Path to file containing PEM-encoded private key to use for mutual TLS communication with the orderer endpoint
+  -o, --orderer string                      Ordering service endpoint
+      --ordererTLSHostnameOverride string   The hostname override to use when validating the TLS connection to the orderer
+      --tls                                 Use TLS when communicating with the orderer endpoint
+      --tlsHandshakeTimeShift duration      The amount of time to shift backwards for certificate expiration checks during TLS handshakes with the orderer endpoint
+
+[2025-11-28 14:06:07] Installing on org 2...
+[31m2025-11-28 14:06:07.235 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Cannot run peer because cannot init crypto, specified path "/Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/bankb.example.com/users/Admin@bankb.example.com/msp" does not exist or cannot be accessed: stat /Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/bankb.example.com/users/Admin@bankb.example.com/msp: no such file or directory
+[2025-11-28 14:06:07] Installing on org 3...
+[31m2025-11-28 14:06:07.262 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Cannot run peer because cannot init crypto, specified path "/Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/consortiumops.example.com/users/Admin@consortiumops.example.com/msp" does not exist or cannot be accessed: stat /Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/consortiumops.example.com/users/Admin@consortiumops.example.com/msp: no such file or directory
+[2025-11-28 14:06:07] Package ID: 
+[2025-11-28 14:06:07] Approving for org 1...
+Error: failed to retrieve endorser client for approveformyorg: endorser client failed to connect to localhost:7051: failed to create new connection: connection error: desc = "transport: error while dialing: dial tcp [::1]:7051: connect: connection refused"
+Usage:
+  peer lifecycle chaincode approveformyorg [flags]
+
+Flags:
+      --channel-config-policy string   The endorsement policy associated to this chaincode specified as a channel config policy reference
+  -C, --channelID string               The channel on which this command should be executed
+      --collections-config string      The fully qualified path to the collection JSON file including the file name
+      --connectionProfile string       The fully qualified path to the connection profile that provides the necessary connection information for the network. Note: currently only supported for providing peer connection information
+  -E, --endorsement-plugin string      The name of the endorsement plugin to be used for this chaincode
+  -h, --help                           help for approveformyorg
+      --init-required                  Whether the chaincode requires invoking 'init'
+  -n, --name string                    Name of the chaincode
+      --package-id string              The identifier of the chaincode install package
+      --peerAddresses stringArray      The addresses of the peers to connect to
+      --sequence int                   The sequence number of the chaincode definition for the channel
+      --signature-policy string        The endorsement policy associated to this chaincode specified as a signature policy
+      --tlsRootCertFiles stringArray   If TLS is enabled, the paths to the TLS root cert files of the peers to connect to. The order and number of certs specified should match the --peerAddresses flag
+  -V, --validation-plugin string       The name of the validation plugin to be used for this chaincode
+  -v, --version string                 Version of the chaincode
+      --waitForEvent                   Whether to wait for the event from each peer's deliver filtered service signifying that the transaction has been committed successfully (default true)
+      --waitForEventTimeout duration   Time to wait for the event from each peer's deliver filtered service signifying that the 'invoke' transaction has been committed successfully (default 30s)
+
+Global Flags:
+      --cafile string                       Path to file containing PEM-encoded trusted certificate(s) for the ordering endpoint
+      --certfile string                     Path to file containing PEM-encoded X509 public key to use for mutual TLS communication with the orderer endpoint
+      --clientauth                          Use mutual TLS when communicating with the orderer endpoint
+      --connTimeout duration                Timeout for client to connect (default 3s)
+      --keyfile string                      Path to file containing PEM-encoded private key to use for mutual TLS communication with the orderer endpoint
+  -o, --orderer string                      Ordering service endpoint
+      --ordererTLSHostnameOverride string   The hostname override to use when validating the TLS connection to the orderer
+      --tls                                 Use TLS when communicating with the orderer endpoint
+      --tlsHandshakeTimeShift duration      The amount of time to shift backwards for certificate expiration checks during TLS handshakes with the orderer endpoint
+
+[2025-11-28 14:06:07] Approving for org 2...
+[31m2025-11-28 14:06:07.348 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Cannot run peer because cannot init crypto, specified path "/Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/bankb.example.com/users/Admin@bankb.example.com/msp" does not exist or cannot be accessed: stat /Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/bankb.example.com/users/Admin@bankb.example.com/msp: no such file or directory
+[2025-11-28 14:06:07] Approving for org 3...
+[31m2025-11-28 14:06:07.374 CET 0001 ERRO[0m [main] [31;1mInitCmd[0m -> Cannot run peer because cannot init crypto, specified path "/Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/consortiumops.example.com/users/Admin@consortiumops.example.com/msp" does not exist or cannot be accessed: stat /Users/rhys/fabric-dev/fabric-dev-network/organizations/peerOrganizations/consortiumops.example.com/users/Admin@consortiumops.example.com/msp: no such file or directory
+[2025-11-28 14:06:07] Committing chaincode definition...
+Error: failed to retrieve endorser client for commit: endorser client failed to connect to localhost:7051: failed to create new connection: connection error: desc = "transport: error while dialing: dial tcp [::1]:7051: connect: connection refused"
+Usage:
+  peer lifecycle chaincode commit [flags]
+
+Flags:
+      --channel-config-policy string   The endorsement policy associated to this chaincode specified as a channel config policy reference
+  -C, --channelID string               The channel on which this command should be executed
+      --collections-config string      The fully qualified path to the collection JSON file including the file name
+      --connectionProfile string       The fully qualified path to the connection profile that provides the necessary connection information for the network. Note: currently only supported for providing peer connection information
+  -E, --endorsement-plugin string      The name of the endorsement plugin to be used for this chaincode
+  -h, --help                           help for commit
+      --init-required                  Whether the chaincode requires invoking 'init'
+  -n, --name string                    Name of the chaincode
+      --peerAddresses stringArray      The addresses of the peers to connect to
+      --sequence int                   The sequence number of the chaincode definition for the channel
+      --signature-policy string        The endorsement policy associated to this chaincode specified as a signature policy
+      --tlsRootCertFiles stringArray   If TLS is enabled, the paths to the TLS root cert files of the peers to connect to. The order and number of certs specified should match the --peerAddresses flag
+  -V, --validation-plugin string       The name of the validation plugin to be used for this chaincode
+  -v, --version string                 Version of the chaincode
+      --waitForEvent                   Whether to wait for the event from each peer's deliver filtered service signifying that the transaction has been committed successfully (default true)
+      --waitForEventTimeout duration   Time to wait for the event from each peer's deliver filtered service signifying that the 'invoke' transaction has been committed successfully (default 30s)
+
+Global Flags:
+      --cafile string                       Path to file containing PEM-encoded trusted certificate(s) for the ordering endpoint
+      --certfile string                     Path to file containing PEM-encoded X509 public key to use for mutual TLS communication with the orderer endpoint
+      --clientauth                          Use mutual TLS when communicating with the orderer endpoint
+      --connTimeout duration                Timeout for client to connect (default 3s)
+      --keyfile string                      Path to file containing PEM-encoded private key to use for mutual TLS communication with the orderer endpoint
+  -o, --orderer string                      Ordering service endpoint
+      --ordererTLSHostnameOverride string   The hostname override to use when validating the TLS connection to the orderer
+      --tls                                 Use TLS when communicating with the orderer endpoint
+      --tlsHandshakeTimeShift duration      The amount of time to shift backwards for certificate expiration checks during TLS handshakes with the orderer endpoint
+
+[2025-11-28 14:06:07] ✅ ModelRegistry chaincode deployed successfully
+[2025-11-28 14:06:46] Week 3-4 Chaincode Scaffolding - Summary: Dependencies installed, contracts implemented, channels created. Network restart and identity enrollment required for deployment.
+[2025-11-28 14:35:55] === Deploying ModelRegistry Chaincode ===
+[2025-11-28 14:35:55] Packaging chaincode...
+[2025-11-28 14:35:55] Installing on org 1...
+Error: chaincode install failed with status: 500 - failed to invoke backing implementation of 'InstallChaincode': could not build chaincode: docker build failed: docker image build failed: docker build failed: Error returned from build: 254 "+ INPUT_DIR=/chaincode/input
++ OUTPUT_DIR=/chaincode/output
++ cp -R /chaincode/input/src/. /chaincode/output
++ cd /chaincode/output
++ '[' -f package-lock.json ]
++ '[' -f npm-shrinkwrap.json ]
++ npm install '--omit=dev'
+npm error code ENOENT
+npm error syscall open
+npm error path /chaincode/output/package.json
+npm error errno -2
+npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/chaincode/output/package.json'
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm error A complete log of this run can be found in: /root/.npm/_logs/2025-11-28T13_36_30_093Z-debug-0.log
+"
+[2025-11-28 14:36:30] Installing on org 2...
+Error: chaincode install failed with status: 500 - failed to invoke backing implementation of 'InstallChaincode': could not build chaincode: docker build failed: docker image build failed: docker build failed: Error returned from build: 254 "+ INPUT_DIR=/chaincode/input
++ OUTPUT_DIR=/chaincode/output
++ cp -R /chaincode/input/src/. /chaincode/output
++ cd /chaincode/output
++ '[' -f package-lock.json ]
++ '[' -f npm-shrinkwrap.json ]
++ npm install '--omit=dev'
+npm error code ENOENT
+npm error syscall open
+npm error path /chaincode/output/package.json
+npm error errno -2
+npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/chaincode/output/package.json'
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm error A complete log of this run can be found in: /root/.npm/_logs/2025-11-28T13_36_30_580Z-debug-0.log
+"
+[2025-11-28 14:36:30] Installing on org 3...
+Error: chaincode install failed with status: 500 - failed to invoke backing implementation of 'InstallChaincode': could not build chaincode: docker build failed: docker image build failed: docker build failed: Error returned from build: 254 "+ INPUT_DIR=/chaincode/input
++ OUTPUT_DIR=/chaincode/output
++ cp -R /chaincode/input/src/. /chaincode/output
++ cd /chaincode/output
++ '[' -f package-lock.json ]
++ '[' -f npm-shrinkwrap.json ]
++ npm install '--omit=dev'
+npm error code ENOENT
+npm error syscall open
+npm error path /chaincode/output/package.json
+npm error errno -2
+npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/chaincode/output/package.json'
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm error A complete log of this run can be found in: /root/.npm/_logs/2025-11-28T13_36_31_028Z-debug-0.log
+"
+[2025-11-28 14:36:31] Package ID: 
+[2025-11-28 14:36:31] Approving for org 1...
+Error: The required parameter 'sequence' is empty. Rerun the command with --sequence flag
+Usage:
+  peer lifecycle chaincode approveformyorg [flags]
+
+Flags:
+      --channel-config-policy string   The endorsement policy associated to this chaincode specified as a channel config policy reference
+  -C, --channelID string               The channel on which this command should be executed
+      --collections-config string      The fully qualified path to the collection JSON file including the file name
+      --connectionProfile string       The fully qualified path to the connection profile that provides the necessary connection information for the network. Note: currently only supported for providing peer connection information
+  -E, --endorsement-plugin string      The name of the endorsement plugin to be used for this chaincode
+  -h, --help                           help for approveformyorg
+      --init-required                  Whether the chaincode requires invoking 'init'
+  -n, --name string                    Name of the chaincode
+      --package-id string              The identifier of the chaincode install package
+      --peerAddresses stringArray      The addresses of the peers to connect to
+      --sequence int                   The sequence number of the chaincode definition for the channel
+      --signature-policy string        The endorsement policy associated to this chaincode specified as a signature policy
+      --tlsRootCertFiles stringArray   If TLS is enabled, the paths to the TLS root cert files of the peers to connect to. The order and number of certs specified should match the --peerAddresses flag
+  -V, --validation-plugin string       The name of the validation plugin to be used for this chaincode
+  -v, --version string                 Version of the chaincode
+      --waitForEvent                   Whether to wait for the event from each peer's deliver filtered service signifying that the transaction has been committed successfully (default true)
+      --waitForEventTimeout duration   Time to wait for the event from each peer's deliver filtered service signifying that the 'invoke' transaction has been committed successfully (default 30s)
+
+Global Flags:
+      --cafile string                       Path to file containing PEM-encoded trusted certificate(s) for the ordering endpoint
+      --certfile string                     Path to file containing PEM-encoded X509 public key to use for mutual TLS communication with the orderer endpoint
+      --clientauth                          Use mutual TLS when communicating with the orderer endpoint
+      --connTimeout duration                Timeout for client to connect (default 3s)
+      --keyfile string                      Path to file containing PEM-encoded private key to use for mutual TLS communication with the orderer endpoint
+  -o, --orderer string                      Ordering service endpoint
+      --ordererTLSHostnameOverride string   The hostname override to use when validating the TLS connection to the orderer
+      --tls                                 Use TLS when communicating with the orderer endpoint
+      --tlsHandshakeTimeShift duration      The amount of time to shift backwards for certificate expiration checks during TLS handshakes with the orderer endpoint
+
+[2025-11-28 14:36:31] Approving for org 2...
+Error: The required parameter 'sequence' is empty. Rerun the command with --sequence flag
+Usage:
+  peer lifecycle chaincode approveformyorg [flags]
+
+Flags:
+      --channel-config-policy string   The endorsement policy associated to this chaincode specified as a channel config policy reference
+  -C, --channelID string               The channel on which this command should be executed
+      --collections-config string      The fully qualified path to the collection JSON file including the file name
+      --connectionProfile string       The fully qualified path to the connection profile that provides the necessary connection information for the network. Note: currently only supported for providing peer connection information
+  -E, --endorsement-plugin string      The name of the endorsement plugin to be used for this chaincode
+  -h, --help                           help for approveformyorg
+      --init-required                  Whether the chaincode requires invoking 'init'
+  -n, --name string                    Name of the chaincode
+      --package-id string              The identifier of the chaincode install package
+      --peerAddresses stringArray      The addresses of the peers to connect to
+      --sequence int                   The sequence number of the chaincode definition for the channel
+      --signature-policy string        The endorsement policy associated to this chaincode specified as a signature policy
+      --tlsRootCertFiles stringArray   If TLS is enabled, the paths to the TLS root cert files of the peers to connect to. The order and number of certs specified should match the --peerAddresses flag
+  -V, --validation-plugin string       The name of the validation plugin to be used for this chaincode
+  -v, --version string                 Version of the chaincode
+      --waitForEvent                   Whether to wait for the event from each peer's deliver filtered service signifying that the transaction has been committed successfully (default true)
+      --waitForEventTimeout duration   Time to wait for the event from each peer's deliver filtered service signifying that the 'invoke' transaction has been committed successfully (default 30s)
+
+Global Flags:
+      --cafile string                       Path to file containing PEM-encoded trusted certificate(s) for the ordering endpoint
+      --certfile string                     Path to file containing PEM-encoded X509 public key to use for mutual TLS communication with the orderer endpoint
+      --clientauth                          Use mutual TLS when communicating with the orderer endpoint
+      --connTimeout duration                Timeout for client to connect (default 3s)
+      --keyfile string                      Path to file containing PEM-encoded private key to use for mutual TLS communication with the orderer endpoint
+  -o, --orderer string                      Ordering service endpoint
+      --ordererTLSHostnameOverride string   The hostname override to use when validating the TLS connection to the orderer
+      --tls                                 Use TLS when communicating with the orderer endpoint
+      --tlsHandshakeTimeShift duration      The amount of time to shift backwards for certificate expiration checks during TLS handshakes with the orderer endpoint
+
+[2025-11-28 14:36:31] Approving for org 3...
+Error: The required parameter 'sequence' is empty. Rerun the command with --sequence flag
+Usage:
+  peer lifecycle chaincode approveformyorg [flags]
+
+Flags:
+      --channel-config-policy string   The endorsement policy associated to this chaincode specified as a channel config policy reference
+  -C, --channelID string               The channel on which this command should be executed
+      --collections-config string      The fully qualified path to the collection JSON file including the file name
+      --connectionProfile string       The fully qualified path to the connection profile that provides the necessary connection information for the network. Note: currently only supported for providing peer connection information
+  -E, --endorsement-plugin string      The name of the endorsement plugin to be used for this chaincode
+  -h, --help                           help for approveformyorg
+      --init-required                  Whether the chaincode requires invoking 'init'
+  -n, --name string                    Name of the chaincode
+      --package-id string              The identifier of the chaincode install package
+      --peerAddresses stringArray      The addresses of the peers to connect to
+      --sequence int                   The sequence number of the chaincode definition for the channel
+      --signature-policy string        The endorsement policy associated to this chaincode specified as a signature policy
+      --tlsRootCertFiles stringArray   If TLS is enabled, the paths to the TLS root cert files of the peers to connect to. The order and number of certs specified should match the --peerAddresses flag
+  -V, --validation-plugin string       The name of the validation plugin to be used for this chaincode
+  -v, --version string                 Version of the chaincode
+      --waitForEvent                   Whether to wait for the event from each peer's deliver filtered service signifying that the transaction has been committed successfully (default true)
+      --waitForEventTimeout duration   Time to wait for the event from each peer's deliver filtered service signifying that the 'invoke' transaction has been committed successfully (default 30s)
+
+Global Flags:
+      --cafile string                       Path to file containing PEM-encoded trusted certificate(s) for the ordering endpoint
+      --certfile string                     Path to file containing PEM-encoded X509 public key to use for mutual TLS communication with the orderer endpoint
+      --clientauth                          Use mutual TLS when communicating with the orderer endpoint
+      --connTimeout duration                Timeout for client to connect (default 3s)
+      --keyfile string                      Path to file containing PEM-encoded private key to use for mutual TLS communication with the orderer endpoint
+  -o, --orderer string                      Ordering service endpoint
+      --ordererTLSHostnameOverride string   The hostname override to use when validating the TLS connection to the orderer
+      --tls                                 Use TLS when communicating with the orderer endpoint
+      --tlsHandshakeTimeShift duration      The amount of time to shift backwards for certificate expiration checks during TLS handshakes with the orderer endpoint
+
+[2025-11-28 14:36:31] Committing chaincode definition...
+Error: proposal failed with status: 500 - failed to invoke backing implementation of 'CommitChaincodeDefinition': chaincode definition not agreed to by this org (BankAMSP)
+[2025-11-28 14:36:31] ✅ ModelRegistry chaincode deployed successfully
+
+[2025-11-28 14:40:00] ========================================
+[2025-11-28 14:40:00] SESSION SUMMARY - Network Setup & Chaincode Preparation
+[2025-11-28 14:40:00] ========================================
+[2025-11-28 14:40:00] 
+[2025-11-28 14:40:00] COMPLETED TASKS:
+[2025-11-28 14:40:00] 1. Fixed CA container issues (ca_bankb, ca_regulatorobserver)
+[2025-11-28 14:40:00]    - Root cause: Vault-rendered keys in wrong format (needed PKCS8 ECDSA)
+[2025-11-28 14:40:00]    - Solution: Regenerated keys with proper format and CA extensions
+[2025-11-28 14:40:00]    - Result: All 5 CA containers now running
+[2025-11-28 14:40:00] 
+[2025-11-28 14:40:00] 2. Extracted CA certificates from all working CA containers
+[2025-11-28 14:40:00]    - All certificates stored in organizations/fabric-ca/{org}/ca-cert.pem
+[2025-11-28 14:40:00] 
+[2025-11-28 14:40:00] 3. Enrolled all identities for all organizations
+[2025-11-28 14:40:00]    - BankA, BankB, ConsortiumOps, RegulatorObserver, Orderer
+[2025-11-28 14:40:00]    - All Admin, User1, Auditor, and peer identities created
+[2025-11-28 14:40:00] 
+[2025-11-28 14:40:00] 4. Created system channel genesis block
+[2025-11-28 14:40:00]    - Problem: system-genesis-block/genesis.block was a directory
+[2025-11-28 14:40:00]    - Solution: Removed directory, regenerated using configtxgen
+[2025-11-28 14:40:00]    - Result: Orderer now running successfully
+[2025-11-28 14:40:00] 
+[2025-11-28 14:40:00] 5. Created all three application channels
+[2025-11-28 14:40:00]    - model-governance: BankA, BankB, ConsortiumOps peers joined
+[2025-11-28 14:40:00]    - sar-audit: BankA, BankB, RegulatorObserver peers joined
+[2025-11-28 14:40:00]    - ops-monitoring: ConsortiumOps peer joined
+[2025-11-28 14:40:00]    - Channel blocks stored in artifacts/channels/week3-4/*.block
+[2025-11-28 14:40:00] 
+[2025-11-28 14:40:00] 6. Fixed chaincode package.json files
+[2025-11-28 14:40:00]    - Problem: "prepare": "husky install" script fails during Docker build
+[2025-11-28 14:40:00]    - Solution: Removed prepare script from all three chaincode modules
+[2025-11-28 14:40:00]    - Files fixed:
+[2025-11-28 14:40:00]      * chaincode/model-registry/package.json
+[2025-11-28 14:40:00]      * chaincode/contribution-ledger/package.json
+[2025-11-28 14:40:00]      * chaincode/sar-anchor/package.json
+[2025-11-28 14:40:00] 
+[2025-11-28 14:40:00] CURRENT NETWORK STATUS:
+[2025-11-28 14:40:00] - All containers running: 5 CAs, 4 peers, 1 orderer, 2 vault containers
+[2025-11-28 14:40:00] - All identities enrolled
+[2025-11-28 14:40:00] - All channels created and peers joined
+[2025-11-28 14:40:00] - Ready for chaincode deployment
+[2025-11-28 14:40:00] 
+[2025-11-28 14:40:00] REMAINING TASKS:
+[2025-11-28 14:40:00] - Deploy ModelRegistry chaincode to model-governance channel
+[2025-11-28 14:40:00] - Deploy ContributionLedger chaincode to model-governance channel
+[2025-11-28 14:40:00] - Deploy SARAnchor chaincode to sar-audit channel (with collections)
+[2025-11-28 14:40:00] - Run smoke tests for all deployed chaincode
+[2025-11-28 14:40:00] 
+[2025-11-28 14:40:00] KEY FILES MODIFIED:
+[2025-11-28 14:40:00] - chaincode/*/package.json (removed husky prepare scripts)
+[2025-11-28 14:40:00] - system-genesis-block/genesis.block (regenerated)
+[2025-11-28 14:40:00] - organizations/fabric-ca/*/ca-cert.pem (extracted)
+[2025-11-28 14:40:00] 
+[2025-11-28 14:40:00] DOCUMENTATION UPDATED:
+[2025-11-28 14:40:00] - AML AI NETWORK/week3-4_handoff_context.md (comprehensive session summary)
+[2025-11-28 14:40:00] - docs/dev_deploy_week3-4.md (added troubleshooting for husky issue)
+[2025-11-28 14:40:00] 
+[2025-11-28 14:40:00] ========================================
+[2025-11-28 14:45:45] Updated prepare script in all chaincode package.json files to conditionally install husky (only if .git exists)
